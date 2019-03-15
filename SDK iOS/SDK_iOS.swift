@@ -1,3 +1,0 @@
-class SDK_iOS {
-
-}

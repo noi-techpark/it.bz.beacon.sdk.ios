@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		31368EBE2231331000C89085 /* SDK_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31368EBD2231331000C89085 /* SDK_iOS.swift */; };
 		31368EC62231681800C89085 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31368EC52231681800C89085 /* CoreData.framework */; };
 		31368ECC22316EB000C89085 /* Beacon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31368ECA22316EB000C89085 /* Beacon.xcdatamodeld */; };
 		31368ECF22316F3000C89085 /* Beacon+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31368ECD22316F3000C89085 /* Beacon+CoreDataClass.swift */; };
 		31368ED022316F3000C89085 /* Beacon+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31368ECE22316F3000C89085 /* Beacon+CoreDataProperties.swift */; };
+		31368ED22231736100C89085 /* NearbyBeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31368ED12231736100C89085 /* NearbyBeaconManager.swift */; };
+		31368ED7223176B100C89085 /* NSPersistentContainer+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31368ED6223176B100C89085 /* NSPersistentContainer+Defaults.swift */; };
+		66F8B1AC568A0E528A928384 /* Pods_SDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EC7B6CB3DD1F7335BB2826 /* Pods_SDK_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,12 +29,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2805380B53589575CAA67E93 /* Pods-SDK iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK iOS.debug.xcconfig"; path = "Target Support Files/Pods-SDK iOS/Pods-SDK iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		31368EBA2231331000C89085 /* libSDK iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSDK iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		31368EBD2231331000C89085 /* SDK_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDK_iOS.swift; sourceTree = "<group>"; };
 		31368EC52231681800C89085 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		31368ECB22316EB000C89085 /* Beacon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Beacon.xcdatamodel; sourceTree = "<group>"; };
 		31368ECD22316F3000C89085 /* Beacon+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Beacon+CoreDataClass.swift"; sourceTree = "<group>"; };
 		31368ECE22316F3000C89085 /* Beacon+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Beacon+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		31368ED12231736100C89085 /* NearbyBeaconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyBeaconManager.swift; sourceTree = "<group>"; };
+		31368ED6223176B100C89085 /* NSPersistentContainer+Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSPersistentContainer+Defaults.swift"; sourceTree = "<group>"; };
+		70EC7B6CB3DD1F7335BB2826 /* Pods_SDK_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SDK_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D944F6C96192689150FA2FB8 /* Pods-SDK iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK iOS.release.xcconfig"; path = "Target Support Files/Pods-SDK iOS/Pods-SDK iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +47,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31368EC62231681800C89085 /* CoreData.framework in Frameworks */,
+				66F8B1AC568A0E528A928384 /* Pods_SDK_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,9 +57,11 @@
 		31368EB12231331000C89085 = {
 			isa = PBXGroup;
 			children = (
+				31368ED52231768100C89085 /* Helper */,
 				31368EBC2231331000C89085 /* SDK iOS */,
 				31368EBB2231331000C89085 /* Products */,
 				31368EC42231681800C89085 /* Frameworks */,
+				A6179A97ACC6EBD57667D91A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,7 +79,7 @@
 				31368ECD22316F3000C89085 /* Beacon+CoreDataClass.swift */,
 				31368ECE22316F3000C89085 /* Beacon+CoreDataProperties.swift */,
 				31368ECA22316EB000C89085 /* Beacon.xcdatamodeld */,
-				31368EBD2231331000C89085 /* SDK_iOS.swift */,
+				31368ED12231736100C89085 /* NearbyBeaconManager.swift */,
 			);
 			path = "SDK iOS";
 			sourceTree = "<group>";
@@ -79,8 +88,26 @@
 			isa = PBXGroup;
 			children = (
 				31368EC52231681800C89085 /* CoreData.framework */,
+				70EC7B6CB3DD1F7335BB2826 /* Pods_SDK_iOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		31368ED52231768100C89085 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				31368ED6223176B100C89085 /* NSPersistentContainer+Defaults.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		A6179A97ACC6EBD57667D91A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2805380B53589575CAA67E93 /* Pods-SDK iOS.debug.xcconfig */,
+				D944F6C96192689150FA2FB8 /* Pods-SDK iOS.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -90,6 +117,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 31368EC12231331000C89085 /* Build configuration list for PBXNativeTarget "SDK iOS" */;
 			buildPhases = (
+				55E2DD4C1D297AD7F02F4924 /* [CP] Check Pods Manifest.lock */,
 				31368EB62231331000C89085 /* Sources */,
 				31368EB72231331000C89085 /* Frameworks */,
 				31368EB82231331000C89085 /* CopyFiles */,
@@ -135,13 +163,39 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		55E2DD4C1D297AD7F02F4924 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SDK iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		31368EB62231331000C89085 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31368EBE2231331000C89085 /* SDK_iOS.swift in Sources */,
+				31368ED7223176B100C89085 /* NSPersistentContainer+Defaults.swift in Sources */,
 				31368ED022316F3000C89085 /* Beacon+CoreDataProperties.swift in Sources */,
+				31368ED22231736100C89085 /* NearbyBeaconManager.swift in Sources */,
 				31368ECC22316EB000C89085 /* Beacon.xcdatamodeld in Sources */,
 				31368ECF22316F3000C89085 /* Beacon+CoreDataClass.swift in Sources */,
 			);
@@ -268,6 +322,7 @@
 		};
 		31368EC22231331000C89085 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2805380B53589575CAA67E93 /* Pods-SDK iOS.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 36TX75ANSB;
@@ -281,6 +336,7 @@
 		};
 		31368EC32231331000C89085 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D944F6C96192689150FA2FB8 /* Pods-SDK iOS.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 36TX75ANSB;

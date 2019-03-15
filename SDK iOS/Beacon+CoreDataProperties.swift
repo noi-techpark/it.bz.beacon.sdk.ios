@@ -1,15 +1,5 @@
-//
-//  Beacon+CoreDataProperties.swift
-//  SDK iOS
-//
-//  Created by Johannes Andrich on 07.03.19.
-//  Copyright © 2019 Johannes Andrich. All rights reserved.
-//
-//
-
 import Foundation
 import CoreData
-
 
 extension Beacon {
 
