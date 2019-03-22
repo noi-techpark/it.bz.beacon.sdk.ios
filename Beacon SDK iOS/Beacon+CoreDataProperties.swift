@@ -8,7 +8,6 @@ extension Beacon {
     }
 
     @NSManaged public var address: String?
-    @NSManaged public var beaconId: String?
     @NSManaged public var cap: String?
     @NSManaged public var floor: String?
     @NSManaged public var id: String?
@@ -20,8 +19,6 @@ extension Beacon {
     @NSManaged public var minor: Int16
     @NSManaged public var name: String?
     @NSManaged public var namespace: String?
-    @NSManaged public var openDataPoiId: String?
     @NSManaged public var uuid: String?
     @NSManaged public var website: String?
-
 }
