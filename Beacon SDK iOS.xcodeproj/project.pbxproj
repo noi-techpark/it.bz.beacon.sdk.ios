@@ -24,10 +24,11 @@
 		3191A0B42243D095006711BC /* Beacon_SDK_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 3191A0B22243D095006711BC /* Beacon_SDK_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3191A0BB2243D9EC006711BC /* NearbyBeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A0BA2243D9EC006711BC /* NearbyBeaconManager.swift */; };
 		3191A0BE2243DE62006711BC /* Beacon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3191A0BC2243DE62006711BC /* Beacon.xcdatamodeld */; };
-		3191A0C12243DEE2006711BC /* Beacon+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A0BF2243DEE2006711BC /* Beacon+CoreDataClass.swift */; };
-		3191A0C22243DEE2006711BC /* Beacon+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A0C02243DEE2006711BC /* Beacon+CoreDataProperties.swift */; };
 		3191A0C42243DF50006711BC /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A0C32243DF50006711BC /* PersistentContainer.swift */; };
 		3191A0C72243E1F1006711BC /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3191A0C62243E1F1006711BC /* CoreBluetooth.framework */; };
+		31FACD9B2248D2FE006A3AA6 /* BeaconInfo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FACD992248D2FE006A3AA6 /* BeaconInfo+CoreDataClass.swift */; };
+		31FACD9C2248D2FE006A3AA6 /* BeaconInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FACD9A2248D2FE006A3AA6 /* BeaconInfo+CoreDataProperties.swift */; };
+		31FACD9E2248D381006A3AA6 /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FACD9D2248D381006A3AA6 /* Beacon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,10 +50,11 @@
 		3191A0B32243D095006711BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3191A0BA2243D9EC006711BC /* NearbyBeaconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyBeaconManager.swift; sourceTree = "<group>"; };
 		3191A0BD2243DE62006711BC /* Beacon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Beacon.xcdatamodel; sourceTree = "<group>"; };
-		3191A0BF2243DEE2006711BC /* Beacon+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Beacon+CoreDataClass.swift"; sourceTree = "<group>"; };
-		3191A0C02243DEE2006711BC /* Beacon+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Beacon+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3191A0C32243DF50006711BC /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		3191A0C62243E1F1006711BC /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		31FACD992248D2FE006A3AA6 /* BeaconInfo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeaconInfo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		31FACD9A2248D2FE006A3AA6 /* BeaconInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeaconInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		31FACD9D2248D381006A3AA6 /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
 		65C10587B130C7F7096C1791 /* Pods_Beacon_SDK_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Beacon_SDK_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E52383529ACAE46171C548F /* Pods-Beacon SDK iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Beacon SDK iOS.release.xcconfig"; path = "Target Support Files/Pods-Beacon SDK iOS/Pods-Beacon SDK iOS.release.xcconfig"; sourceTree = "<group>"; };
 		EF211838585ACECBD62E8B15 /* Pods-Beacon SDK iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Beacon SDK iOS.debug.xcconfig"; path = "Target Support Files/Pods-Beacon SDK iOS/Pods-Beacon SDK iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -143,15 +145,16 @@
 		3191A0B12243D095006711BC /* Beacon SDK iOS */ = {
 			isa = PBXGroup;
 			children = (
+				31FACD992248D2FE006A3AA6 /* BeaconInfo+CoreDataClass.swift */,
+				31FACD9A2248D2FE006A3AA6 /* BeaconInfo+CoreDataProperties.swift */,
 				3106184D2244CCED00F1C75F /* SwaggerClient */,
-				3191A0BF2243DEE2006711BC /* Beacon+CoreDataClass.swift */,
-				3191A0C02243DEE2006711BC /* Beacon+CoreDataProperties.swift */,
 				3191A0B22243D095006711BC /* Beacon_SDK_iOS.h */,
 				3191A0B32243D095006711BC /* Info.plist */,
 				3191A0BA2243D9EC006711BC /* NearbyBeaconManager.swift */,
 				3191A0BC2243DE62006711BC /* Beacon.xcdatamodeld */,
 				3191A0C32243DF50006711BC /* PersistentContainer.swift */,
 				3168F80122452A310012B033 /* BeaconScannerDelegate.swift */,
+				31FACD9D2248D381006A3AA6 /* Beacon.swift */,
 			);
 			path = "Beacon SDK iOS";
 			sourceTree = "<group>";
@@ -282,12 +285,14 @@
 				310618622244CCED00F1C75F /* JSONEncodableEncoding.swift in Sources */,
 				3106185E2244CCED00F1C75F /* APIHelper.swift in Sources */,
 				3106185F2244CCED00F1C75F /* AlamofireImplementations.swift in Sources */,
+				31FACD9B2248D2FE006A3AA6 /* BeaconInfo+CoreDataClass.swift in Sources */,
 				3191A0BB2243D9EC006711BC /* NearbyBeaconManager.swift in Sources */,
-				3191A0C22243DEE2006711BC /* Beacon+CoreDataProperties.swift in Sources */,
+				31FACD9C2248D2FE006A3AA6 /* BeaconInfo+CoreDataProperties.swift in Sources */,
 				310618652244CCED00F1C75F /* BaseMessage.swift in Sources */,
 				310618632244CCED00F1C75F /* APIs.swift in Sources */,
 				310618602244CCED00F1C75F /* InfoControllerAPI.swift in Sources */,
 				310618672244CCED00F1C75F /* JSONEncodingHelper.swift in Sources */,
+				31FACD9E2248D381006A3AA6 /* Beacon.swift in Sources */,
 				3191A0C42243DF50006711BC /* PersistentContainer.swift in Sources */,
 				310618692244CCED00F1C75F /* Configuration.swift in Sources */,
 				3168F80222452A310012B033 /* BeaconScannerDelegate.swift in Sources */,
@@ -295,7 +300,6 @@
 				310618682244CCED00F1C75F /* Models.swift in Sources */,
 				310618642244CCED00F1C75F /* Info.swift in Sources */,
 				310618612244CCED00F1C75F /* CodableHelper.swift in Sources */,
-				3191A0C12243DEE2006711BC /* Beacon+CoreDataClass.swift in Sources */,
 				310618662244CCED00F1C75F /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

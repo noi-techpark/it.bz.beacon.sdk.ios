@@ -1,10 +1,11 @@
 import Foundation
 import CoreData
 
-extension Beacon {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Beacon> {
-        return NSFetchRequest<Beacon>(entityName: "Beacon")
+extension BeaconInfo {
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<BeaconInfo> {
+        return NSFetchRequest<BeaconInfo>(entityName: "BeaconInfo")
     }
 
     @NSManaged public var address: String?
@@ -21,4 +22,5 @@ extension Beacon {
     @NSManaged public var namespace: String?
     @NSManaged public var uuid: String?
     @NSManaged public var website: String?
+
 }

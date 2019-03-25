@@ -1,11 +1,3 @@
-//
-//  Beacon_SDK_iOS.h
-//  Beacon SDK iOS
-//
-//  Created by Johannes Andrich on 21.03.19.
-//  Copyright © 2019 Johannes Andrich. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 //! Project version number for Beacon_SDK_iOS.

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Beacon" representedClassName="Beacon" syncable="YES">
+    <entity name="BeaconInfo" representedClassName="BeaconInfo" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cap" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="floor" optional="YES" attributeType="String" syncable="YES"/>
@@ -22,6 +22,6 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Beacon" positionX="-63" positionY="-18" width="128" height="253"/>
+        <element name="BeaconInfo" positionX="-63" positionY="-18" width="128" height="255"/>
     </elements>
 </model>
