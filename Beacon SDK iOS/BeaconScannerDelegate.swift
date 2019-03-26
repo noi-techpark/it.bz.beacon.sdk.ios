@@ -1,6 +1,8 @@
 import Foundation
+import KontaktSDK
 
 public protocol BeaconScannerDelegate {
     
-    func didDiscoverBeacon(_ beacon: Beacon)
+    func didDiscoverIBeacon(_ iBeacon: CLBeacon, beacon: Beacon)
+    func didDiscoverEddystone(_ eddystone: KTKEddystone, beacon: Beacon)
 }
