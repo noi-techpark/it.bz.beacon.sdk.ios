@@ -1,26 +1,25 @@
-//
-//  ViewController.swift
-//  Demo
-//
-//  Created by Johannes Andrich on 26.03.19.
-//  Copyright © 2019 Johannes Andrich. All rights reserved.
-//
-
 import UIKit
+import KontaktSDK
 import Beacon_SDK_iOS
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, BeaconScannerDelegate {
+    
+    func didDiscoverIBeacon(_ iBeacon: CLBeacon, beacon: Beacon) {
+        NSLog("didDiscoverIBeacon: \(String(describing: beacon.name))")
+    }
+    
+    func didDiscoverEddystone(_ eddystone: KTKEddystone, beacon: Beacon) {
+        NSLog("didDiscoverEddystone: \(String(describing: beacon.name))")
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
         let manager = NearbyBeaconManager.instance
         manager.refreshBeacons()
-        
-        let beacon = manager.getBeacon("cZyH1K")
-        NSLog("beacon: \(beacon?.name)")
+        manager.setBeaconScannerDelegate(beaconScannerDelegate: self)
+        manager.startScanning()
     }
-
-
 }
 
