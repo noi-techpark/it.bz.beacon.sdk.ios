@@ -8,3 +8,10 @@ target 'Beacon SDK iOS' do
     pod 'Alamofire', '~> 4.3'
 
 end
+
+target 'Demo' do
+      
+    pod 'KontaktSDK', '~> 2.0'
+    pod 'Alamofire', '~> 4.3'
+      
+end
