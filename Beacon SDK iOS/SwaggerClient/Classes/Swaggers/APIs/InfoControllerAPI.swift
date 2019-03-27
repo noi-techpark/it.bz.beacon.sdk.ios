@@ -31,19 +31,17 @@ open class InfoControllerAPI {
   "website" : "website",
   "address" : "address",
   "minor" : 5,
-  "latitude" : 0.8008282,
-  "beaconId" : "beaconId",
+  "latitude" : 0.8008281904610115,
   "uuid" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
   "cap" : "cap",
   "instanceId" : "instanceId",
   "major" : 1,
-  "openDataPoiId" : "openDataPoiId",
   "name" : "name",
   "namespace" : "namespace",
   "location" : "location",
   "id" : "id",
   "floor" : "floor",
-  "longitude" : 6.0274563
+  "longitude" : 6.027456183070403
 }}]
      
      - parameter instanceId: (path) instanceId 
@@ -83,36 +81,32 @@ open class InfoControllerAPI {
   "website" : "website",
   "address" : "address",
   "minor" : 5,
-  "latitude" : 0.8008282,
-  "beaconId" : "beaconId",
+  "latitude" : 0.8008281904610115,
   "uuid" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
   "cap" : "cap",
   "instanceId" : "instanceId",
   "major" : 1,
-  "openDataPoiId" : "openDataPoiId",
   "name" : "name",
   "namespace" : "namespace",
   "location" : "location",
   "id" : "id",
   "floor" : "floor",
-  "longitude" : 6.0274563
+  "longitude" : 6.027456183070403
 }, {
   "website" : "website",
   "address" : "address",
   "minor" : 5,
-  "latitude" : 0.8008282,
-  "beaconId" : "beaconId",
+  "latitude" : 0.8008281904610115,
   "uuid" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
   "cap" : "cap",
   "instanceId" : "instanceId",
   "major" : 1,
-  "openDataPoiId" : "openDataPoiId",
   "name" : "name",
   "namespace" : "namespace",
   "location" : "location",
   "id" : "id",
   "floor" : "floor",
-  "longitude" : 6.0274563
+  "longitude" : 6.027456183070403
 } ]}]
 
      - returns: RequestBuilder<[Info]> 
@@ -150,19 +144,17 @@ open class InfoControllerAPI {
   "website" : "website",
   "address" : "address",
   "minor" : 5,
-  "latitude" : 0.8008282,
-  "beaconId" : "beaconId",
+  "latitude" : 0.8008281904610115,
   "uuid" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
   "cap" : "cap",
   "instanceId" : "instanceId",
   "major" : 1,
-  "openDataPoiId" : "openDataPoiId",
   "name" : "name",
   "namespace" : "namespace",
   "location" : "location",
   "id" : "id",
   "floor" : "floor",
-  "longitude" : 6.0274563
+  "longitude" : 6.027456183070403
 }}]
      
      - parameter id: (path) id 
@@ -204,19 +196,17 @@ open class InfoControllerAPI {
   "website" : "website",
   "address" : "address",
   "minor" : 5,
-  "latitude" : 0.8008282,
-  "beaconId" : "beaconId",
+  "latitude" : 0.8008281904610115,
   "uuid" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
   "cap" : "cap",
   "instanceId" : "instanceId",
   "major" : 1,
-  "openDataPoiId" : "openDataPoiId",
   "name" : "name",
   "namespace" : "namespace",
   "location" : "location",
   "id" : "id",
   "floor" : "floor",
-  "longitude" : 6.0274563
+  "longitude" : 6.027456183070403
 }}]
      
      - parameter major: (path) major 

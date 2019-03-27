@@ -33,9 +33,40 @@
 		3191A0BE2243DE62006711BC /* Beacon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3191A0BC2243DE62006711BC /* Beacon.xcdatamodeld */; };
 		3191A0C42243DF50006711BC /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A0C32243DF50006711BC /* PersistentContainer.swift */; };
 		3191A0C72243E1F1006711BC /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3191A0C62243E1F1006711BC /* CoreBluetooth.framework */; };
-		31FACD9B2248D2FE006A3AA6 /* BeaconInfo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FACD992248D2FE006A3AA6 /* BeaconInfo+CoreDataClass.swift */; };
-		31FACD9C2248D2FE006A3AA6 /* BeaconInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FACD9A2248D2FE006A3AA6 /* BeaconInfo+CoreDataProperties.swift */; };
-		31FACD9E2248D381006A3AA6 /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FACD9D2248D381006A3AA6 /* Beacon.swift */; };
+		31E22257224B65C7003AD75B /* TrustedBeaconControllerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22256224B65C7003AD75B /* TrustedBeaconControllerAPI.swift */; };
+		31E22259224B66DA003AD75B /* BeaconBatteryLevelUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22258224B66DA003AD75B /* BeaconBatteryLevelUpdate.swift */; };
+		31E22261224B6775003AD75B /* AuthControllerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E2225B224B6774003AD75B /* AuthControllerAPI.swift */; };
+		31E2227C224B6790003AD75B /* IssueCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22266224B678F003AD75B /* IssueCreation.swift */; };
+		31E2227D224B6790003AD75B /* ModelURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22267224B678F003AD75B /* ModelURL.swift */; };
+		31E2227F224B6790003AD75B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22269224B678F003AD75B /* User.swift */; };
+		31E22280224B6790003AD75B /* AuthenticationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E2226A224B678F003AD75B /* AuthenticationRequest.swift */; };
+		31E22281224B6790003AD75B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E2226B224B678F003AD75B /* File.swift */; };
+		31E22282224B6790003AD75B /* AuthenticationTokenCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E2226C224B678F003AD75B /* AuthenticationTokenCheck.swift */; };
+		31E22283224B6790003AD75B /* BeaconUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E2226D224B678F003AD75B /* BeaconUpdate.swift */; };
+		31E22284224B6790003AD75B /* ManufacturerOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E2226E224B678F003AD75B /* ManufacturerOrder.swift */; };
+		31E22285224B6790003AD75B /* AuthenticationTokenCheckRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E2226F224B678F003AD75B /* AuthenticationTokenCheckRequest.swift */; };
+		31E22287224B6790003AD75B /* InputStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22271224B678F003AD75B /* InputStream.swift */; };
+		31E22288224B6790003AD75B /* PendingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22272224B678F003AD75B /* PendingConfiguration.swift */; };
+		31E22289224B6790003AD75B /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22273224B678F003AD75B /* Resource.swift */; };
+		31E2228A224B6790003AD75B /* IssueSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22274224B6790003AD75B /* IssueSolution.swift */; };
+		31E2228C224B6790003AD75B /* UserCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22276224B6790003AD75B /* UserCreation.swift */; };
+		31E2228D224B6790003AD75B /* UserUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22277224B6790003AD75B /* UserUpdate.swift */; };
+		31E2228E224B6790003AD75B /* AuthenticationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22278224B6790003AD75B /* AuthenticationToken.swift */; };
+		31E2228F224B6790003AD75B /* URI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22279224B6790003AD75B /* URI.swift */; };
+		31E22297224B6A11003AD75B /* BeaconControllerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22292224B6A11003AD75B /* BeaconControllerAPI.swift */; };
+		31E22298224B6A11003AD75B /* OrderControllerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22293224B6A11003AD75B /* OrderControllerAPI.swift */; };
+		31E22299224B6A11003AD75B /* UserControllerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22294224B6A11003AD75B /* UserControllerAPI.swift */; };
+		31E2229A224B6A11003AD75B /* ImageControllerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22295224B6A11003AD75B /* ImageControllerAPI.swift */; };
+		31E2229B224B6A11003AD75B /* IssueControllerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22296224B6A11003AD75B /* IssueControllerAPI.swift */; };
+		31E222A1224B6A28003AD75B /* BeaconOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E2229C224B6A27003AD75B /* BeaconOrder.swift */; };
+		31E222A2224B6A28003AD75B /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E2229D224B6A27003AD75B /* Beacon.swift */; };
+		31E222A3224B6A28003AD75B /* BeaconImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E2229E224B6A27003AD75B /* BeaconImage.swift */; };
+		31E222A4224B6A28003AD75B /* BeaconOrderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E2229F224B6A27003AD75B /* BeaconOrderData.swift */; };
+		31E222A5224B6A28003AD75B /* BeaconIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E222A0224B6A28003AD75B /* BeaconIssue.swift */; };
+		31E222AC224B71EC003AD75B /* BeaconInfoSDK+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E222AA224B71EC003AD75B /* BeaconInfoSDK+CoreDataClass.swift */; };
+		31E222AD224B71EC003AD75B /* BeaconInfoSDK+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E222AB224B71EC003AD75B /* BeaconInfoSDK+CoreDataProperties.swift */; };
+		31E222B0224B82A2003AD75B /* api.json in Resources */ = {isa = PBXBuildFile; fileRef = 31E222AF224B82A2003AD75B /* api.json */; };
+		31FACD9E2248D381006A3AA6 /* BeaconInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FACD9D2248D381006A3AA6 /* BeaconInfo.swift */; };
 		B0B0ABFE8B661784490BAB84 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D19E2AC11BBEA3921E51A676 /* Pods_Demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,9 +122,40 @@
 		3191A0BD2243DE62006711BC /* Beacon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Beacon.xcdatamodel; sourceTree = "<group>"; };
 		3191A0C32243DF50006711BC /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		3191A0C62243E1F1006711BC /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		31FACD992248D2FE006A3AA6 /* BeaconInfo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeaconInfo+CoreDataClass.swift"; sourceTree = "<group>"; };
-		31FACD9A2248D2FE006A3AA6 /* BeaconInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeaconInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		31FACD9D2248D381006A3AA6 /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
+		31E22256224B65C7003AD75B /* TrustedBeaconControllerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustedBeaconControllerAPI.swift; sourceTree = "<group>"; };
+		31E22258224B66DA003AD75B /* BeaconBatteryLevelUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconBatteryLevelUpdate.swift; sourceTree = "<group>"; };
+		31E2225B224B6774003AD75B /* AuthControllerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthControllerAPI.swift; sourceTree = "<group>"; };
+		31E22266224B678F003AD75B /* IssueCreation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueCreation.swift; sourceTree = "<group>"; };
+		31E22267224B678F003AD75B /* ModelURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelURL.swift; sourceTree = "<group>"; };
+		31E22269224B678F003AD75B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		31E2226A224B678F003AD75B /* AuthenticationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationRequest.swift; sourceTree = "<group>"; };
+		31E2226B224B678F003AD75B /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		31E2226C224B678F003AD75B /* AuthenticationTokenCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationTokenCheck.swift; sourceTree = "<group>"; };
+		31E2226D224B678F003AD75B /* BeaconUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconUpdate.swift; sourceTree = "<group>"; };
+		31E2226E224B678F003AD75B /* ManufacturerOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManufacturerOrder.swift; sourceTree = "<group>"; };
+		31E2226F224B678F003AD75B /* AuthenticationTokenCheckRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationTokenCheckRequest.swift; sourceTree = "<group>"; };
+		31E22271224B678F003AD75B /* InputStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputStream.swift; sourceTree = "<group>"; };
+		31E22272224B678F003AD75B /* PendingConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingConfiguration.swift; sourceTree = "<group>"; };
+		31E22273224B678F003AD75B /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		31E22274224B6790003AD75B /* IssueSolution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueSolution.swift; sourceTree = "<group>"; };
+		31E22276224B6790003AD75B /* UserCreation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreation.swift; sourceTree = "<group>"; };
+		31E22277224B6790003AD75B /* UserUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUpdate.swift; sourceTree = "<group>"; };
+		31E22278224B6790003AD75B /* AuthenticationToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationToken.swift; sourceTree = "<group>"; };
+		31E22279224B6790003AD75B /* URI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URI.swift; sourceTree = "<group>"; };
+		31E22292224B6A11003AD75B /* BeaconControllerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconControllerAPI.swift; sourceTree = "<group>"; };
+		31E22293224B6A11003AD75B /* OrderControllerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderControllerAPI.swift; sourceTree = "<group>"; };
+		31E22294224B6A11003AD75B /* UserControllerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserControllerAPI.swift; sourceTree = "<group>"; };
+		31E22295224B6A11003AD75B /* ImageControllerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageControllerAPI.swift; sourceTree = "<group>"; };
+		31E22296224B6A11003AD75B /* IssueControllerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueControllerAPI.swift; sourceTree = "<group>"; };
+		31E2229C224B6A27003AD75B /* BeaconOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconOrder.swift; sourceTree = "<group>"; };
+		31E2229D224B6A27003AD75B /* Beacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
+		31E2229E224B6A27003AD75B /* BeaconImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconImage.swift; sourceTree = "<group>"; };
+		31E2229F224B6A27003AD75B /* BeaconOrderData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconOrderData.swift; sourceTree = "<group>"; };
+		31E222A0224B6A28003AD75B /* BeaconIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconIssue.swift; sourceTree = "<group>"; };
+		31E222AA224B71EC003AD75B /* BeaconInfoSDK+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeaconInfoSDK+CoreDataClass.swift"; sourceTree = "<group>"; };
+		31E222AB224B71EC003AD75B /* BeaconInfoSDK+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeaconInfoSDK+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		31E222AF224B82A2003AD75B /* api.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = api.json; path = swagger/api.json; sourceTree = SOURCE_ROOT; };
+		31FACD9D2248D381006A3AA6 /* BeaconInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconInfo.swift; sourceTree = "<group>"; };
 		65C10587B130C7F7096C1791 /* Pods_Beacon_SDK_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Beacon_SDK_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E52383529ACAE46171C548F /* Pods-Beacon SDK iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Beacon SDK iOS.release.xcconfig"; path = "Target Support Files/Pods-Beacon SDK iOS/Pods-Beacon SDK iOS.release.xcconfig"; sourceTree = "<group>"; };
 		8B49F9B2B4DCDE8E7F548277 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
@@ -143,13 +205,13 @@
 		3106184F2244CCED00F1C75F /* Swaggers */ = {
 			isa = PBXGroup;
 			children = (
+				310618522244CCED00F1C75F /* APIs */,
+				310618572244CCED00F1C75F /* Models */,
 				310618502244CCED00F1C75F /* APIHelper.swift */,
 				310618512244CCED00F1C75F /* AlamofireImplementations.swift */,
-				310618522244CCED00F1C75F /* APIs */,
 				310618542244CCED00F1C75F /* CodableHelper.swift */,
 				310618552244CCED00F1C75F /* JSONEncodableEncoding.swift */,
 				310618562244CCED00F1C75F /* APIs.swift */,
-				310618572244CCED00F1C75F /* Models */,
 				3106185A2244CCED00F1C75F /* Extensions.swift */,
 				3106185B2244CCED00F1C75F /* JSONEncodingHelper.swift */,
 				3106185C2244CCED00F1C75F /* Models.swift */,
@@ -161,6 +223,13 @@
 		310618522244CCED00F1C75F /* APIs */ = {
 			isa = PBXGroup;
 			children = (
+				31E2225B224B6774003AD75B /* AuthControllerAPI.swift */,
+				31E22292224B6A11003AD75B /* BeaconControllerAPI.swift */,
+				31E22295224B6A11003AD75B /* ImageControllerAPI.swift */,
+				31E22296224B6A11003AD75B /* IssueControllerAPI.swift */,
+				31E22293224B6A11003AD75B /* OrderControllerAPI.swift */,
+				31E22294224B6A11003AD75B /* UserControllerAPI.swift */,
+				31E22256224B65C7003AD75B /* TrustedBeaconControllerAPI.swift */,
 				310618532244CCED00F1C75F /* InfoControllerAPI.swift */,
 			);
 			path = APIs;
@@ -169,7 +238,30 @@
 		310618572244CCED00F1C75F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				31E2226A224B678F003AD75B /* AuthenticationRequest.swift */,
+				31E22278224B6790003AD75B /* AuthenticationToken.swift */,
+				31E2226C224B678F003AD75B /* AuthenticationTokenCheck.swift */,
+				31E2226F224B678F003AD75B /* AuthenticationTokenCheckRequest.swift */,
+				31E2229D224B6A27003AD75B /* Beacon.swift */,
+				31E2229E224B6A27003AD75B /* BeaconImage.swift */,
+				31E222A0224B6A28003AD75B /* BeaconIssue.swift */,
+				31E2229C224B6A27003AD75B /* BeaconOrder.swift */,
+				31E2229F224B6A27003AD75B /* BeaconOrderData.swift */,
+				31E2226D224B678F003AD75B /* BeaconUpdate.swift */,
+				31E2226B224B678F003AD75B /* File.swift */,
+				31E22271224B678F003AD75B /* InputStream.swift */,
+				31E22266224B678F003AD75B /* IssueCreation.swift */,
+				31E22274224B6790003AD75B /* IssueSolution.swift */,
+				31E2226E224B678F003AD75B /* ManufacturerOrder.swift */,
+				31E22267224B678F003AD75B /* ModelURL.swift */,
+				31E22272224B678F003AD75B /* PendingConfiguration.swift */,
+				31E22273224B678F003AD75B /* Resource.swift */,
+				31E22279224B6790003AD75B /* URI.swift */,
+				31E22269224B678F003AD75B /* User.swift */,
+				31E22276224B6790003AD75B /* UserCreation.swift */,
+				31E22277224B6790003AD75B /* UserUpdate.swift */,
 				310618582244CCED00F1C75F /* Info.swift */,
+				31E22258224B66DA003AD75B /* BeaconBatteryLevelUpdate.swift */,
 				310618592244CCED00F1C75F /* BaseMessage.swift */,
 			);
 			path = Models;
@@ -211,8 +303,9 @@
 		3191A0B12243D095006711BC /* Beacon SDK iOS */ = {
 			isa = PBXGroup;
 			children = (
-				31FACD992248D2FE006A3AA6 /* BeaconInfo+CoreDataClass.swift */,
-				31FACD9A2248D2FE006A3AA6 /* BeaconInfo+CoreDataProperties.swift */,
+				31E222AE224B8292003AD75B /* Swagger */,
+				31E222AA224B71EC003AD75B /* BeaconInfoSDK+CoreDataClass.swift */,
+				31E222AB224B71EC003AD75B /* BeaconInfoSDK+CoreDataProperties.swift */,
 				3106184D2244CCED00F1C75F /* SwaggerClient */,
 				3191A0B22243D095006711BC /* Beacon_SDK_iOS.h */,
 				3191A0B32243D095006711BC /* Info.plist */,
@@ -220,7 +313,7 @@
 				3191A0BC2243DE62006711BC /* Beacon.xcdatamodeld */,
 				3191A0C32243DF50006711BC /* PersistentContainer.swift */,
 				3168F80122452A310012B033 /* BeaconScannerDelegate.swift */,
-				31FACD9D2248D381006A3AA6 /* Beacon.swift */,
+				31FACD9D2248D381006A3AA6 /* BeaconInfo.swift */,
 			);
 			path = "Beacon SDK iOS";
 			sourceTree = "<group>";
@@ -233,6 +326,14 @@
 				D19E2AC11BBEA3921E51A676 /* Pods_Demo.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		31E222AE224B8292003AD75B /* Swagger */ = {
+			isa = PBXGroup;
+			children = (
+				31E222AF224B82A2003AD75B /* api.json */,
+			);
+			path = Swagger;
 			sourceTree = "<group>";
 		};
 		396AC39B01C0EB6139228D3F /* Pods */ = {
@@ -353,6 +454,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31E222B0224B82A2003AD75B /* api.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,23 +547,53 @@
 			files = (
 				310618622244CCED00F1C75F /* JSONEncodableEncoding.swift in Sources */,
 				3106185E2244CCED00F1C75F /* APIHelper.swift in Sources */,
+				31E22284224B6790003AD75B /* ManufacturerOrder.swift in Sources */,
 				3106185F2244CCED00F1C75F /* AlamofireImplementations.swift in Sources */,
-				31FACD9B2248D2FE006A3AA6 /* BeaconInfo+CoreDataClass.swift in Sources */,
+				31E2228C224B6790003AD75B /* UserCreation.swift in Sources */,
+				31E2227F224B6790003AD75B /* User.swift in Sources */,
+				31E22282224B6790003AD75B /* AuthenticationTokenCheck.swift in Sources */,
+				31E2229A224B6A11003AD75B /* ImageControllerAPI.swift in Sources */,
+				31E22259224B66DA003AD75B /* BeaconBatteryLevelUpdate.swift in Sources */,
+				31E2229B224B6A11003AD75B /* IssueControllerAPI.swift in Sources */,
+				31E22299224B6A11003AD75B /* UserControllerAPI.swift in Sources */,
+				31E222A5224B6A28003AD75B /* BeaconIssue.swift in Sources */,
 				3191A0BB2243D9EC006711BC /* NearbyBeaconManager.swift in Sources */,
-				31FACD9C2248D2FE006A3AA6 /* BeaconInfo+CoreDataProperties.swift in Sources */,
+				31E222AC224B71EC003AD75B /* BeaconInfoSDK+CoreDataClass.swift in Sources */,
 				310618652244CCED00F1C75F /* BaseMessage.swift in Sources */,
 				310618632244CCED00F1C75F /* APIs.swift in Sources */,
 				310618602244CCED00F1C75F /* InfoControllerAPI.swift in Sources */,
+				31E222A1224B6A28003AD75B /* BeaconOrder.swift in Sources */,
 				310618672244CCED00F1C75F /* JSONEncodingHelper.swift in Sources */,
-				31FACD9E2248D381006A3AA6 /* Beacon.swift in Sources */,
+				31E22298224B6A11003AD75B /* OrderControllerAPI.swift in Sources */,
+				31E22288224B6790003AD75B /* PendingConfiguration.swift in Sources */,
+				31E222A2224B6A28003AD75B /* Beacon.swift in Sources */,
+				31FACD9E2248D381006A3AA6 /* BeaconInfo.swift in Sources */,
+				31E2227D224B6790003AD75B /* ModelURL.swift in Sources */,
+				31E2227C224B6790003AD75B /* IssueCreation.swift in Sources */,
+				31E22283224B6790003AD75B /* BeaconUpdate.swift in Sources */,
 				3191A0C42243DF50006711BC /* PersistentContainer.swift in Sources */,
+				31E22257224B65C7003AD75B /* TrustedBeaconControllerAPI.swift in Sources */,
 				310618692244CCED00F1C75F /* Configuration.swift in Sources */,
 				3168F80222452A310012B033 /* BeaconScannerDelegate.swift in Sources */,
+				31E222A4224B6A28003AD75B /* BeaconOrderData.swift in Sources */,
+				31E2228A224B6790003AD75B /* IssueSolution.swift in Sources */,
+				31E2228D224B6790003AD75B /* UserUpdate.swift in Sources */,
 				3191A0BE2243DE62006711BC /* Beacon.xcdatamodeld in Sources */,
+				31E22285224B6790003AD75B /* AuthenticationTokenCheckRequest.swift in Sources */,
 				310618682244CCED00F1C75F /* Models.swift in Sources */,
+				31E222A3224B6A28003AD75B /* BeaconImage.swift in Sources */,
+				31E22289224B6790003AD75B /* Resource.swift in Sources */,
+				31E22261224B6775003AD75B /* AuthControllerAPI.swift in Sources */,
+				31E2228E224B6790003AD75B /* AuthenticationToken.swift in Sources */,
 				310618642244CCED00F1C75F /* Info.swift in Sources */,
 				310618612244CCED00F1C75F /* CodableHelper.swift in Sources */,
+				31E222AD224B71EC003AD75B /* BeaconInfoSDK+CoreDataProperties.swift in Sources */,
+				31E22297224B6A11003AD75B /* BeaconControllerAPI.swift in Sources */,
 				310618662244CCED00F1C75F /* Extensions.swift in Sources */,
+				31E22281224B6790003AD75B /* File.swift in Sources */,
+				31E2228F224B6790003AD75B /* URI.swift in Sources */,
+				31E22287224B6790003AD75B /* InputStream.swift in Sources */,
+				31E22280224B6790003AD75B /* AuthenticationRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

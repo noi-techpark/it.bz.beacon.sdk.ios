@@ -12,27 +12,24 @@ import Foundation
 open class Info: Codable {
 
     public var address: String?
-    public var beaconId: String?
     public var cap: String?
     public var floor: String?
     public var id: String?
     public var instanceId: String?
-    public var latitude: Float?
+    public var latitude: Double?
     public var location: String?
-    public var longitude: Float?
+    public var longitude: Double?
     public var major: Int?
     public var minor: Int?
     public var name: String?
     public var namespace: String?
-    public var openDataPoiId: String?
     public var uuid: UUID?
     public var website: String?
 
 
     
-    public init(address: String?, beaconId: String?, cap: String?, floor: String?, id: String?, instanceId: String?, latitude: Float?, location: String?, longitude: Float?, major: Int?, minor: Int?, name: String?, namespace: String?, openDataPoiId: String?, uuid: UUID?, website: String?) {
+    public init(address: String?, cap: String?, floor: String?, id: String?, instanceId: String?, latitude: Double?, location: String?, longitude: Double?, major: Int?, minor: Int?, name: String?, namespace: String?, uuid: UUID?, website: String?) {
         self.address = address
-        self.beaconId = beaconId
         self.cap = cap
         self.floor = floor
         self.id = id
@@ -44,7 +41,6 @@ open class Info: Codable {
         self.minor = minor
         self.name = name
         self.namespace = namespace
-        self.openDataPoiId = openDataPoiId
         self.uuid = uuid
         self.website = website
     }
@@ -57,7 +53,6 @@ open class Info: Codable {
         var container = encoder.container(keyedBy: String.self)
 
         try container.encodeIfPresent(address, forKey: "address")
-        try container.encodeIfPresent(beaconId, forKey: "beaconId")
         try container.encodeIfPresent(cap, forKey: "cap")
         try container.encodeIfPresent(floor, forKey: "floor")
         try container.encodeIfPresent(id, forKey: "id")
@@ -69,7 +64,6 @@ open class Info: Codable {
         try container.encodeIfPresent(minor, forKey: "minor")
         try container.encodeIfPresent(name, forKey: "name")
         try container.encodeIfPresent(namespace, forKey: "namespace")
-        try container.encodeIfPresent(openDataPoiId, forKey: "openDataPoiId")
         try container.encodeIfPresent(uuid, forKey: "uuid")
         try container.encodeIfPresent(website, forKey: "website")
     }
@@ -80,19 +74,17 @@ open class Info: Codable {
         let container = try decoder.container(keyedBy: String.self)
 
         address = try container.decodeIfPresent(String.self, forKey: "address")
-        beaconId = try container.decodeIfPresent(String.self, forKey: "beaconId")
         cap = try container.decodeIfPresent(String.self, forKey: "cap")
         floor = try container.decodeIfPresent(String.self, forKey: "floor")
         id = try container.decodeIfPresent(String.self, forKey: "id")
         instanceId = try container.decodeIfPresent(String.self, forKey: "instanceId")
-        latitude = try container.decodeIfPresent(Float.self, forKey: "latitude")
+        latitude = try container.decodeIfPresent(Double.self, forKey: "latitude")
         location = try container.decodeIfPresent(String.self, forKey: "location")
-        longitude = try container.decodeIfPresent(Float.self, forKey: "longitude")
+        longitude = try container.decodeIfPresent(Double.self, forKey: "longitude")
         major = try container.decodeIfPresent(Int.self, forKey: "major")
         minor = try container.decodeIfPresent(Int.self, forKey: "minor")
         name = try container.decodeIfPresent(String.self, forKey: "name")
         namespace = try container.decodeIfPresent(String.self, forKey: "namespace")
-        openDataPoiId = try container.decodeIfPresent(String.self, forKey: "openDataPoiId")
         uuid = try container.decodeIfPresent(UUID.self, forKey: "uuid")
         website = try container.decodeIfPresent(String.self, forKey: "website")
     }
