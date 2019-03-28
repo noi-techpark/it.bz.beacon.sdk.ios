@@ -16,8 +16,8 @@ extension BeaconInfoSDK {
     @NSManaged public var latitude: Float
     @NSManaged public var location: String?
     @NSManaged public var longitude: Float
-    @NSManaged public var major: Int16
-    @NSManaged public var minor: Int16
+    @NSManaged public var major: Int32
+    @NSManaged public var minor: Int32
     @NSManaged public var name: String?
     @NSManaged public var namespace: String?
     @NSManaged public var uuid: String?

@@ -10,8 +10,8 @@ public class BeaconInfo: NSObject {
     public var latitude: Double = 0.0
     public var location: String?
     public var longitude: Double = 0.0
-    public var major: Int16 = 0
-    public var minor: Int16 = 0
+    public var major: Int32 = 0
+    public var minor: Int32 = 0
     public var name: String?
     public var namespace: String?
     public var uuid: String?
@@ -27,8 +27,8 @@ public class BeaconInfo: NSObject {
         beacon.latitude = info.latitude!
         beacon.location = info.location
         beacon.longitude = info.longitude!
-        beacon.major = Int16(info.major!)
-        beacon.minor = Int16(info.minor!)
+        beacon.major = Int32(info.major!)
+        beacon.minor = Int32(info.minor!)
         beacon.name = info.name
         beacon.namespace = info.namespace
         beacon.uuid = info.uuid?.uuidString
@@ -46,8 +46,8 @@ public class BeaconInfo: NSObject {
         beacon.latitude = beaconInfo.value(forKey: "latitude") as! Double
         beacon.location = beaconInfo.value(forKey: "location") as? String
         beacon.longitude = beaconInfo.value(forKey: "longitude") as! Double
-        beacon.major = beaconInfo.value(forKey: "major") as! Int16
-        beacon.minor = beaconInfo.value(forKey: "minor") as! Int16
+        beacon.major = beaconInfo.value(forKey: "major") as! Int32
+        beacon.minor = beaconInfo.value(forKey: "minor") as! Int32
         beacon.name = beaconInfo.value(forKey: "name") as? String
         beacon.namespace = beaconInfo.value(forKey: "namespace") as? String
         beacon.uuid = beaconInfo.value(forKey: "uuid") as? String

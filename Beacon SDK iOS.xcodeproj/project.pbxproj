@@ -66,6 +66,9 @@
 		31E222AC224B71EC003AD75B /* BeaconInfoSDK+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E222AA224B71EC003AD75B /* BeaconInfoSDK+CoreDataClass.swift */; };
 		31E222AD224B71EC003AD75B /* BeaconInfoSDK+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E222AB224B71EC003AD75B /* BeaconInfoSDK+CoreDataProperties.swift */; };
 		31E222B0224B82A2003AD75B /* api.json in Resources */ = {isa = PBXBuildFile; fileRef = 31E222AF224B82A2003AD75B /* api.json */; };
+		31E222BC224BD257003AD75B /* BaseBeaconInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E222BB224BD257003AD75B /* BaseBeaconInfo.swift */; };
+		31E222BE224BD317003AD75B /* IBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E222BD224BD317003AD75B /* IBeacon.swift */; };
+		31E222C0224BD345003AD75B /* Eddystone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E222BF224BD345003AD75B /* Eddystone.swift */; };
 		31FACD9E2248D381006A3AA6 /* BeaconInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FACD9D2248D381006A3AA6 /* BeaconInfo.swift */; };
 		B0B0ABFE8B661784490BAB84 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D19E2AC11BBEA3921E51A676 /* Pods_Demo.framework */; };
 /* End PBXBuildFile section */
@@ -155,6 +158,9 @@
 		31E222AA224B71EC003AD75B /* BeaconInfoSDK+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeaconInfoSDK+CoreDataClass.swift"; sourceTree = "<group>"; };
 		31E222AB224B71EC003AD75B /* BeaconInfoSDK+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeaconInfoSDK+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		31E222AF224B82A2003AD75B /* api.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = api.json; path = swagger/api.json; sourceTree = SOURCE_ROOT; };
+		31E222BB224BD257003AD75B /* BaseBeaconInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBeaconInfo.swift; sourceTree = "<group>"; };
+		31E222BD224BD317003AD75B /* IBeacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBeacon.swift; sourceTree = "<group>"; };
+		31E222BF224BD345003AD75B /* Eddystone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eddystone.swift; sourceTree = "<group>"; };
 		31FACD9D2248D381006A3AA6 /* BeaconInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconInfo.swift; sourceTree = "<group>"; };
 		65C10587B130C7F7096C1791 /* Pods_Beacon_SDK_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Beacon_SDK_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E52383529ACAE46171C548F /* Pods-Beacon SDK iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Beacon SDK iOS.release.xcconfig"; path = "Target Support Files/Pods-Beacon SDK iOS/Pods-Beacon SDK iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -303,6 +309,7 @@
 		3191A0B12243D095006711BC /* Beacon SDK iOS */ = {
 			isa = PBXGroup;
 			children = (
+				31E222BA224BD239003AD75B /* Result */,
 				31E222AE224B8292003AD75B /* Swagger */,
 				31E222AA224B71EC003AD75B /* BeaconInfoSDK+CoreDataClass.swift */,
 				31E222AB224B71EC003AD75B /* BeaconInfoSDK+CoreDataProperties.swift */,
@@ -334,6 +341,16 @@
 				31E222AF224B82A2003AD75B /* api.json */,
 			);
 			path = Swagger;
+			sourceTree = "<group>";
+		};
+		31E222BA224BD239003AD75B /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				31E222BB224BD257003AD75B /* BaseBeaconInfo.swift */,
+				31E222BD224BD317003AD75B /* IBeacon.swift */,
+				31E222BF224BD345003AD75B /* Eddystone.swift */,
+			);
+			path = Result;
 			sourceTree = "<group>";
 		};
 		396AC39B01C0EB6139228D3F /* Pods */ = {
@@ -546,6 +563,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				310618622244CCED00F1C75F /* JSONEncodableEncoding.swift in Sources */,
+				31E222C0224BD345003AD75B /* Eddystone.swift in Sources */,
 				3106185E2244CCED00F1C75F /* APIHelper.swift in Sources */,
 				31E22284224B6790003AD75B /* ManufacturerOrder.swift in Sources */,
 				3106185F2244CCED00F1C75F /* AlamofireImplementations.swift in Sources */,
@@ -565,8 +583,10 @@
 				31E222A1224B6A28003AD75B /* BeaconOrder.swift in Sources */,
 				310618672244CCED00F1C75F /* JSONEncodingHelper.swift in Sources */,
 				31E22298224B6A11003AD75B /* OrderControllerAPI.swift in Sources */,
+				31E222BE224BD317003AD75B /* IBeacon.swift in Sources */,
 				31E22288224B6790003AD75B /* PendingConfiguration.swift in Sources */,
 				31E222A2224B6A28003AD75B /* Beacon.swift in Sources */,
+				31E222BC224BD257003AD75B /* BaseBeaconInfo.swift in Sources */,
 				31FACD9E2248D381006A3AA6 /* BeaconInfo.swift in Sources */,
 				31E2227D224B6790003AD75B /* ModelURL.swift in Sources */,
 				31E2227C224B6790003AD75B /* IssueCreation.swift in Sources */,

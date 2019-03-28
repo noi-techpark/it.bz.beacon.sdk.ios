@@ -6,25 +6,6 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
     
     var credentials : URLCredential?
     
-    public func devicesManager(_ manager: KTKDevicesManager, didDiscover devices: [KTKNearbyDevice]) {
-        for device in devices {
-            NSLog("found device \(String(describing: device.name)) with battery level \(device.batteryLevel)")
-            if device.batteryLevel > 0 {
-                let nameParts = device.name!.components(separatedBy: "#")
-                let battery = BeaconBatteryLevelUpdate.init(batteryLevel: Int(device.batteryLevel))
-                SwaggerClientAPI.credential = credentials
-                TrustedBeaconControllerAPI.updateUsingPATCH1WithRequestBuilder(batteryLevelUpdate: battery, id: nameParts[1]).addCredential().execute { (response, error) in
-                    if error != nil {
-                        NSLog("error updating beacon: \(error.debugDescription)")
-                    }
-                    else {
-                        NSLog("beacon updated: \(String(describing: response?.body?.id))")
-                    }
-                }
-            }
-        }
-    }
-    
     var beaconManager: KTKBeaconManager!
     var eddystoneManager: KTKEddystoneManager!
     var secureProfileManager: KTKDevicesManager!
@@ -61,7 +42,7 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
         case .notDetermined:
             break
         case .denied, .restricted:
-            appendLog("No Authorization")
+            NSLog("No Authorization")
             break
         case .authorizedWhenInUse, .authorizedAlways:
             startScanning()
@@ -91,7 +72,7 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
                 beacons.append(BeaconInfo.fromBeaconInfoSDK(beaconInfo: beaconInfo as! BeaconInfoSDK))
             }
         } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+            NSLog("Could not fetch. \(error), \(error.userInfo)")
         }
         return beacons
     }
@@ -109,7 +90,7 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
                 return BeaconInfo.fromBeaconInfoSDK(beaconInfo: beaconInfo as! BeaconInfoSDK)
             }
         } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+            NSLog("Could not fetch. \(error), \(error.userInfo)")
         }
         return nil
     }
@@ -121,20 +102,17 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
         if KTKBeaconManager.isMonitoringAvailable() {
             beaconManager.stopMonitoring(for: region)
             beaconManager.startMonitoring(for: region)
+            NSLog("Started scanning for iBeacons")
         }
         else {
-            appendLog("Device does not support monitoring!")
+            NSLog("Device does not support monitoring!")
         }
         
         let eddystoneRegion1 = KTKEddystoneRegion(namespaceID: "6a84c7166a63bd873dd9")
         eddystoneManager.startEddystoneDiscovery(in: eddystoneRegion1)
-        appendLog("Started scanning for Eddystone beacons")
+        NSLog("Started scanning for Eddystone beacons")
         
         secureProfileManager.startDevicesDiscovery()
-    }
-    
-    private func appendLog(_ text: String) {
-        NSLog(text)
     }
     
     func stopRanging() {
@@ -164,21 +142,21 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
     }
     
     private func beaconManager(_ manager: KTKBeaconManager, didStartMonitoringFor region: KTKBeaconRegion) {
-        appendLog("did start monitoring for region \(region.identifier)")
+        NSLog("did start monitoring for region \(region.identifier)")
     }
     
     private func beaconManager(_ manager: KTKBeaconManager, monitoringDidFailFor region: KTKBeaconRegion?, withError error: Error?) {
-        appendLog("monitoring did fail: \((error?.localizedDescription)!)")
+        NSLog("monitoring did fail: \((error?.localizedDescription)!)")
     }
     
     private func beaconManager(_ manager: KTKBeaconManager, didEnter region: KTKBeaconRegion) {
-        appendLog("did enter region \(region.identifier)")
+        NSLog("did enter region \(region.identifier)")
         beaconManager.startRangingBeacons(in: region)
-        appendLog("Started ranging for iBeacons")
+        NSLog("Started ranging for iBeacons")
     }
     
     private func beaconManager(_ manager: KTKBeaconManager, didExitRegion region: KTKBeaconRegion) {
-        appendLog("did exit region \(region.identifier)")
+        NSLog("did exit region \(region.identifier)")
         beaconManager.stopRangingBeacons(in: region)
     }
     
@@ -190,6 +168,26 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
         }
     }
     
+    public func devicesManager(_ manager: KTKDevicesManager, didDiscover devices: [KTKNearbyDevice]) {
+//        for device in devices {
+//            if device.batteryLevel > 0 {
+//                if (device.name != nil) {
+//                    let nameParts = device.name!.components(separatedBy: "#")
+//                    let battery = BeaconBatteryLevelUpdate.init(batteryLevel: Int(device.batteryLevel))
+//                    SwaggerClientAPI.credential = credentials
+//                    TrustedBeaconControllerAPI.updateUsingPATCH1WithRequestBuilder(batteryLevelUpdate: battery, id: nameParts[1]).addCredential().execute { (response, error) in
+//                        if error != nil {
+//    //                        NSLog("error updating beacon: \(error.debugDescription)")
+//                        }
+//                        else {
+//                            NSLog("beacon updated: \(String(describing: response?.body?.id))")
+//                        }
+//                    }
+//                }
+//            }
+//        }
+    }
+    
     public func refreshBeacons() {
         InfoControllerAPI.getListUsingGET2() { (infos: [Info]?, error: Error?) in self.handleInfos(infos: infos, error: error) }
     }
@@ -198,7 +196,7 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
         if (infos != nil) {
             for info in infos! {
                 save(info: info)
-//                NSLog("info: \(String(describing: info.name))")
+                //                NSLog("info: \(String(describing: info.name))")
             }
             UserDefaults.standard.set(Date(), forKey: LAST_REFRESH)
         }
@@ -206,7 +204,7 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
     
     func handleEddystone(eddystone: KTKEddystone, info: Info?, error: Error?) {
         if (info != nil) {
-            appendLog(info!.name ?? "No beacon name")
+//            NSLog(info!.name ?? "No beacon name")
             save(info: info!)
             discoveredEddystoneByInfo(eddystone: eddystone, info: info!)
         }
@@ -220,21 +218,21 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
                 beacons = try managedContext.fetch(fetchRequest)
                 for beacon in beacons {
                     if beacon.value(forKey: "name") != nil {
-                        let beaconName = beacon.value(forKey: "name")!
-                        let beaconId = beacon.value(forKey: "id")!
                         discoveredEddystoneByCache(eddystone: eddystone, beaconInfo: beacon as! BeaconInfoSDK)
-                        appendLog("\(beaconName) (\(beaconId))")
+//                        let beaconName = beacon.value(forKey: "name")!
+//                        let beaconId = beacon.value(forKey: "id")!
+//                        NSLog("\(beaconName) (\(beaconId))")
                     }
                 }
             } catch let error as NSError {
-                print("Could not fetch. \(error), \(error.userInfo)")
+                NSLog("Could not fetch. \(error), \(error.userInfo)")
             }
         }
     }
     
     func handleIBeacon(iBeacon: CLBeacon, info: Info?, error: Error?) {
         if (info != nil) {
-            appendLog(info!.name ?? "No beacon name")
+//            NSLog(info!.name ?? "No beacon name")
             save(info: info!)
             discoveredIBeaconByInfo(iBeacon: iBeacon, info: info!)
         }
@@ -251,32 +249,53 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
                 beacons = try managedContext.fetch(fetchRequest)
                 for beacon in beacons {
                     if beacon.value(forKey: "name") != nil {
-                        let beaconName = beacon.value(forKey: "name")!
-                        let beaconId = beacon.value(forKey: "id")!
                         discoveredIBeaconByCache(iBeacon: iBeacon, beaconInfo: beacon as! BeaconInfoSDK)
-                        appendLog("\(beaconName) (\(beaconId))")
+//                        let beaconName = beacon.value(forKey: "name")!
+//                        let beaconId = beacon.value(forKey: "id")!
+//                        NSLog("\(beaconName) (\(beaconId))")
                     }
                 }
             } catch let error as NSError {
-                print("Could not fetch. \(error), \(error.userInfo)")
+                NSLog("Could not fetch. \(error), \(error.userInfo)")
             }
         }
     }
     
     func discoveredIBeaconByInfo(iBeacon: CLBeacon, info: Info) {
-        delegate?.didDiscoverIBeacon(iBeacon, beacon: BeaconInfo.fromInfo(info: info))
+        delegate?.didDiscoverIBeacon(IBeacon(uuid: iBeacon.proximityUUID.uuidString,
+                                             major: Int32(truncating: iBeacon.major),
+                                             minor: Int32(truncating: iBeacon.minor),
+                                             info: BeaconInfo.fromInfo(info: info)))
     }
     
     func discoveredIBeaconByCache(iBeacon: CLBeacon, beaconInfo: BeaconInfoSDK) {
-        delegate?.didDiscoverIBeacon(iBeacon, beacon: BeaconInfo.fromBeaconInfoSDK(beaconInfo: beaconInfo))
+        delegate?.didDiscoverIBeacon(IBeacon(uuid: iBeacon.proximityUUID.uuidString,
+                                             major: Int32(truncating: iBeacon.major),
+                                             minor: Int32(truncating: iBeacon.minor),
+                                             info: BeaconInfo.fromBeaconInfoSDK(beaconInfo: beaconInfo)))
     }
     
+    //    public init(namespace: String, instanceId: String, url: String, eid: String, encryptedTelemetry: String, batteryVoltage: Double, temperature: Double, info: BeaconInfo?) {
     func discoveredEddystoneByInfo(eddystone: KTKEddystone, info: Info) {
-        delegate?.didDiscoverEddystone(eddystone, beacon: BeaconInfo.fromInfo(info: info))
+        delegate?.didDiscoverEddystone(Eddystone(namespace: eddystone.eddystoneUID?.namespaceID,
+                                                 instanceId: eddystone.eddystoneUID?.instanceID,
+                                                 url: eddystone.eddystoneURL?.url?.absoluteString,
+                                                 eid: nil,
+                                                 encryptedTelemetry: nil,
+                                                 batteryVoltage: eddystone.eddystoneTLM?.batteryVoltage,
+                                                 temperature:eddystone.eddystoneTLM?.temperature,
+                                                 info: BeaconInfo.fromInfo(info: info)))
     }
     
     func discoveredEddystoneByCache(eddystone: KTKEddystone, beaconInfo: BeaconInfoSDK) {
-        delegate?.didDiscoverEddystone(eddystone, beacon: BeaconInfo.fromBeaconInfoSDK(beaconInfo: beaconInfo))
+        delegate?.didDiscoverEddystone(Eddystone(namespace: eddystone.eddystoneUID?.namespaceID,
+                                                 instanceId: eddystone.eddystoneUID?.instanceID,
+                                                 url: eddystone.eddystoneURL?.url?.absoluteString,
+                                                 eid: nil,
+                                                 encryptedTelemetry: nil,
+                                                 batteryVoltage: eddystone.eddystoneTLM?.batteryVoltage,
+                                                 temperature:eddystone.eddystoneTLM?.temperature,
+                                                 info: BeaconInfo.fromBeaconInfoSDK(beaconInfo: beaconInfo)))
     }
     
     func save(info: Info) {
@@ -301,14 +320,13 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
         
         do {
             try managedContext.save()
-            //            print("Saved \(String(describing: info.name))")
         } catch let error as NSError {
-            appendLog("Could not save. \(error), \(error.userInfo)")
+            NSLog("Could not save. \(error), \(error.userInfo)")
         }
     }
     
     private func beaconManager(_ manager: KTKBeaconManager, didDetermineState state: CLRegionState, for region: KTKBeaconRegion) {
-        appendLog("did determine state \(state.rawValue) for region \(region.identifier)")
+        NSLog("did determine state \(state.rawValue) for region \(region.identifier)")
     }
     
     lazy var persistentContainer: NSPersistentContainer = {
