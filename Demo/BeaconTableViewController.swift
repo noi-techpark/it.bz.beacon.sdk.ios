@@ -43,6 +43,7 @@ class BeaconTableViewController: UITableViewController, BeaconScannerDelegate {
         }
         if !isInList {
             beacons.append(newBeacon)
+            beacons = beacons.sorted(by: {$0.name ?? "" < $1.name ?? ""})
             tableView.reloadData()
         }
     }
