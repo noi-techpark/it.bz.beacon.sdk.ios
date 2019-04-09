@@ -1,5 +1,5 @@
 import Foundation
 
 protocol BaseBeaconInfo {    
-    func getInfo() -> BeaconInfo?
+    func getInfo() -> BZBeaconInfo?
 }

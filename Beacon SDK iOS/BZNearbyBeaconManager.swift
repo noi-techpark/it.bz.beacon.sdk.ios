@@ -2,7 +2,7 @@ import Foundation
 import KontaktSDK
 import CoreData
 
-public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddystoneManagerDelegate, KTKDevicesManagerDelegate {
+public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddystoneManagerDelegate, KTKDevicesManagerDelegate {
     
     var credentials : URLCredential?
     
@@ -10,11 +10,11 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
     var eddystoneManager: KTKEddystoneManager!
     var secureProfileManager: KTKDevicesManager!
     var managedContext: NSManagedObjectContext!
-    var delegate: BeaconScannerDelegate?
+    var delegate: BZBeaconScannerDelegate?
     let LAST_REFRESH = "LASTREFRESH"
     
-    public static let instance: NearbyBeaconManager = {
-        let instance = NearbyBeaconManager()
+    public static let instance: BZNearbyBeaconManager = {
+        let instance = BZNearbyBeaconManager()
         return instance
     }()
     
@@ -49,7 +49,7 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
         }
     }
     
-    public func setBeaconScannerDelegate(beaconScannerDelegate: BeaconScannerDelegate) {
+    public func setBeaconScannerDelegate(beaconScannerDelegate: BZBeaconScannerDelegate) {
         delegate = beaconScannerDelegate
     }
     
@@ -57,8 +57,8 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
         self.credentials = credentials
     }
     
-    public func getAllBeacons() -> [BeaconInfo] {
-        var beacons : [BeaconInfo] = []
+    public func getAllBeacons() -> [BZBeaconInfo] {
+        var beacons : [BZBeaconInfo] = []
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: BeaconInfoSDK.entityName)
         let sortByNameASC = NSSortDescriptor(key: "name", ascending: true)
         let sortByIdASC = NSSortDescriptor(key: "id", ascending: true)
@@ -69,7 +69,7 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
             
             beaconInfos = try managedContext.fetch(fetchRequest)
             for beaconInfo in beaconInfos {
-                beacons.append(BeaconInfo.fromBeaconInfoSDK(beaconInfo: beaconInfo as! BeaconInfoSDK))
+                beacons.append(BZBeaconInfo.fromBeaconInfoSDK(beaconInfo: beaconInfo as! BeaconInfoSDK))
             }
         } catch let error as NSError {
             NSLog("Could not fetch. \(error), \(error.userInfo)")
@@ -77,7 +77,7 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
         return beacons
     }
     
-    public func getBeacon(_ id: String) -> BeaconInfo? {
+    public func getBeacon(_ id: String) -> BZBeaconInfo? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: BeaconInfoSDK.entityName)
         fetchRequest.fetchLimit = 1
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
@@ -87,7 +87,7 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
             
             beaconInfos = try managedContext.fetch(fetchRequest)
             for beaconInfo in beaconInfos {
-                return BeaconInfo.fromBeaconInfoSDK(beaconInfo: beaconInfo as! BeaconInfoSDK)
+                return BZBeaconInfo.fromBeaconInfoSDK(beaconInfo: beaconInfo as! BeaconInfoSDK)
             }
         } catch let error as NSError {
             NSLog("Could not fetch. \(error), \(error.userInfo)")
@@ -253,14 +253,14 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
         delegate?.didDiscoverIBeacon(IBeacon(uuid: iBeacon.proximityUUID.uuidString,
                                              major: Int32(truncating: iBeacon.major),
                                              minor: Int32(truncating: iBeacon.minor),
-                                             info: BeaconInfo.fromInfo(info: info)))
+                                             info: BZBeaconInfo.fromInfo(info: info)))
     }
     
     func discoveredIBeaconByCache(iBeacon: CLBeacon, beaconInfo: BeaconInfoSDK) {
         delegate?.didDiscoverIBeacon(IBeacon(uuid: iBeacon.proximityUUID.uuidString,
                                              major: Int32(truncating: iBeacon.major),
                                              minor: Int32(truncating: iBeacon.minor),
-                                             info: BeaconInfo.fromBeaconInfoSDK(beaconInfo: beaconInfo)))
+                                             info: BZBeaconInfo.fromBeaconInfoSDK(beaconInfo: beaconInfo)))
     }
     
     func discoveredEddystoneByInfo(eddystone: KTKEddystone, info: Info) {
@@ -271,7 +271,7 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
                                                  encryptedTelemetry: nil,
                                                  batteryVoltage: eddystone.eddystoneTLM?.batteryVoltage,
                                                  temperature:eddystone.eddystoneTLM?.temperature,
-                                                 info: BeaconInfo.fromInfo(info: info)))
+                                                 info: BZBeaconInfo.fromInfo(info: info)))
     }
     
     func discoveredEddystoneByCache(eddystone: KTKEddystone, beaconInfo: BeaconInfoSDK) {
@@ -282,7 +282,7 @@ public class NearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddysto
                                                  encryptedTelemetry: nil,
                                                  batteryVoltage: eddystone.eddystoneTLM?.batteryVoltage,
                                                  temperature:eddystone.eddystoneTLM?.temperature,
-                                                 info: BeaconInfo.fromBeaconInfoSDK(beaconInfo: beaconInfo)))
+                                                 info: BZBeaconInfo.fromBeaconInfoSDK(beaconInfo: beaconInfo)))
     }
     
     func save(info: Info) {

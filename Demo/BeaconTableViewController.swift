@@ -1,14 +1,14 @@
 import UIKit
 import Beacon_SDK_iOS
 
-class BeaconTableViewController: UITableViewController, BeaconScannerDelegate {
+class BeaconTableViewController: UITableViewController, BZBeaconScannerDelegate {
     
-    var beacons = [BeaconInfo]()
+    var beacons = [BZBeaconInfo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let manager = NearbyBeaconManager.instance
+        let manager = BZNearbyBeaconManager.instance
         manager.refreshBeacons()
         manager.setBeaconScannerDelegate(beaconScannerDelegate: self)
         manager.startScanning()
@@ -16,7 +16,7 @@ class BeaconTableViewController: UITableViewController, BeaconScannerDelegate {
     
     func didDiscoverIBeacon(_ iBeacon: IBeacon) {
         NSLog("App did discover iBeacon: %@", iBeacon.getInfo()?.name ?? "(no name)")
-        let beacon = BeaconInfo()
+        let beacon = BZBeaconInfo()
         beacon.name = iBeacon.getInfo()?.name
         beacon.id = iBeacon.getInfo()?.id
         beacon.address = iBeacon.getInfo()?.address
@@ -26,7 +26,7 @@ class BeaconTableViewController: UITableViewController, BeaconScannerDelegate {
     
     func didDiscoverEddystone(_ eddystone: Eddystone) {
         NSLog("App did discover Eddystone: %@", eddystone.getInfo()?.name ?? "(no name)")
-        let beacon = BeaconInfo()
+        let beacon = BZBeaconInfo()
         beacon.name = eddystone.getInfo()?.name
         beacon.id = eddystone.getInfo()?.id
         beacon.address = eddystone.getInfo()?.address
@@ -34,7 +34,7 @@ class BeaconTableViewController: UITableViewController, BeaconScannerDelegate {
         eventuallyAddToList(beacon)
     }
     
-    func eventuallyAddToList(_ newBeacon: BeaconInfo) {
+    func eventuallyAddToList(_ newBeacon: BZBeaconInfo) {
         var isInList = false
         for beacon in beacons {
             if beacon.id == newBeacon.id {

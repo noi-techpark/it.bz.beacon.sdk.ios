@@ -1,6 +1,6 @@
 import Foundation
 
-public class BeaconInfo: NSObject {
+public class BZBeaconInfo: NSObject {
     
     public var address: String?
     public var cap: String?
@@ -17,8 +17,8 @@ public class BeaconInfo: NSObject {
     public var uuid: String?
     public var website: String?
     
-    static func fromInfo(info: Info) -> BeaconInfo {
-        let beacon = BeaconInfo()
+    static func fromInfo(info: Info) -> BZBeaconInfo {
+        let beacon = BZBeaconInfo()
         beacon.address = info.address
         beacon.cap = info.cap
         beacon.floor = info.floor
@@ -36,8 +36,8 @@ public class BeaconInfo: NSObject {
         return beacon
     }
     
-    static func fromBeaconInfoSDK(beaconInfo: BeaconInfoSDK) -> BeaconInfo {
-        let beacon = BeaconInfo()
+    static func fromBeaconInfoSDK(beaconInfo: BeaconInfoSDK) -> BZBeaconInfo {
+        let beacon = BZBeaconInfo()
         beacon.address = beaconInfo.value(forKey: "address") as? String
         beacon.cap = beaconInfo.value(forKey: "cap") as? String
         beacon.floor = beaconInfo.value(forKey: "floor") as? String
