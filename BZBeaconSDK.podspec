@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
 
   s.description  = "Find nearby beacons of the Beacon Suedtirol - Alto Adige Project, and get all relevant information about them"
 
-  s.homepage     = "https://github.com/idm-suedtirol/beacon-suedtirol-mobile-sdk-ios"
+  s.homepage     = "https://github.com/noi-techpark/beacon-suedtirol-mobile-sdk-ios"
 
   s.license      = "MPL 2.0"
 
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.platform     = :ios, "11.0"
 
-  s.source       = { :git => "git@github.com:idm-suedtirol/beacon-suedtirol-api.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/noi-techpark/beacon-suedtirol-api.git", :tag => "#{s.version}" }
 
   s.source_files  = "Classes", "Classes/**/*.{h,m}"
   s.exclude_files = "Classes/Exclude"
