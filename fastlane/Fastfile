@@ -10,7 +10,7 @@ platform :ios do
     )
     run_tests(
         device: "iPhone 6s",
-        scheme: "Beacon SDK iOS",
+        scheme: "Beacon_SDK_iOSTests",
         xcargs: "-UseModernBuildSystem=NO"
     )
   end
