@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "BZBeaconSDK"
-  s.version      = "0.0.1"
+  s.version      = "0.1.0"
   s.summary      = "SDK for the Beacon Suedtirol - Alto Adige Project"
 
   s.description  = "Find nearby beacons of the Beacon Suedtirol - Alto Adige Project, and get all relevant information about them"
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.platform     = :ios, "11.0"
 
-  s.source       = { :git => "https://github.com/noi-techpark/beacon-suedtirol-api.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/noi-techpark/beacon-suedtirol-mobile-sdk-ios.git", :tag => "#{s.version}" }
 
   s.source_files  = "Beacon SDK iOS", "Beacon SDK iOS/**/*.swift"
   s.exclude_files = "Classes/Exclude"
