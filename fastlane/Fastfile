@@ -9,7 +9,7 @@ platform :ios do
       repo_update: true
     )
     run_tests(
-      project: "Beacon SDK iOS.xcodeproj",
+      workspace: "Beacon SDK iOS.xcworkspace",
       device: "iPhone 8",
       scheme: "Beacon_SDK_iOSTests",
       xcargs: "-UseModernBuildSystem=NO"
