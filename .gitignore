@@ -29,6 +29,7 @@ xcuserdata/
 *.dSYM
 
 # Bundler
+/Gemfile.lock
 /.bundle
 /vendor
 
