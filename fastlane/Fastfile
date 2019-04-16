@@ -5,13 +5,14 @@ platform :ios do
   desc "Runs all the tests"
   lane :test do
     cocoapods(
-        podfile: "./Podfile",
-        repo_update: true
+      podfile: "./Podfile",
+      repo_update: true
     )
     run_tests(
-        device: "iPhone 6s",
-        scheme: "Beacon_SDK_iOSTests",
-        xcargs: "-UseModernBuildSystem=NO"
+      workspace: "Beacon SDK iOS.xcworkspace",
+      device: "iPhone 8",
+      scheme: "Beacon_SDK_iOSTests",
+      xcargs: "-UseModernBuildSystem=NO"
     )
   end
 end
