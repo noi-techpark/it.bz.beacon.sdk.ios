@@ -29,7 +29,7 @@ pipeline {
         stage('Release') {
             steps {
                 ansiColor('xterm') {
-                    sh 'sed -i "" "s%\\(\\s*s\\.version\\s*=\\s*\\).*\\$%\\1\\"' + "${params.TAG}" + '\\"%" BZBeaconSDK.podspec'
+                    sh 'sed -i "" "s%\\([[:space:]]*s\\.version[[:space:]]*=[[:space:]]*\\).*\\$%\\1\\"' + "${params.TAG}" + '\\"%" BZBeaconSDK.podspec'
                     sh 'cat BZBeaconSDK.podspec'
                     // sh 'bundle exec pod trunk push --allow-warnings'
                 }
