@@ -18,6 +18,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/noi-techpark/beacon-suedtirol-mobile-sdk-ios.git", :tag => "#{s.version}" }
 
   s.source_files  = "Beacon SDK iOS", "Beacon SDK iOS/**/*.swift"
+  s.resources = "Beacon SDK iOS/*.xcdatamodeld"
   s.exclude_files = "Classes/Exclude"
   s.swift_version = "4.2"
 
