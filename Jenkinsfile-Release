@@ -19,13 +19,13 @@ pipeline {
                 }
             }
         }
-        stage('Test') {
-            steps {
-                ansiColor('xterm') {
-                    sh 'bundle exec fastlane test'
-                }
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         ansiColor('xterm') {
+        //             sh 'bundle exec fastlane test'
+        //         }
+        //     }
+        // }
         stage('Release') {
             steps {
                 ansiColor('xterm') {
