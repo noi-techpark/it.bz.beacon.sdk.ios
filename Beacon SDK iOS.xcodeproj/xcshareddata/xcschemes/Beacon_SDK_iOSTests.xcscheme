@@ -5,6 +5,22 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "31554FF5225DF60C0089C2E8"
+               BuildableName = "Beacon_SDK_iOSTests.xctest"
+               BlueprintName = "Beacon_SDK_iOSTests"
+               ReferencedContainer = "container:Beacon SDK iOS.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
@@ -36,6 +52,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "31554FF5225DF60C0089C2E8"
+            BuildableName = "Beacon_SDK_iOSTests.xctest"
+            BlueprintName = "Beacon_SDK_iOSTests"
+            ReferencedContainer = "container:Beacon SDK iOS.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -45,6 +70,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "31554FF5225DF60C0089C2E8"
+            BuildableName = "Beacon_SDK_iOSTests.xctest"
+            BlueprintName = "Beacon_SDK_iOSTests"
+            ReferencedContainer = "container:Beacon SDK iOS.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
