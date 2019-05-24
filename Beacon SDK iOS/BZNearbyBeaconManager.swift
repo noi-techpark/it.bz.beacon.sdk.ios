@@ -202,20 +202,15 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
             if (newestInfo != nil) {
                 latestUpdatedAt = newestInfo!.updatedAt
             }
-        } catch let error as NSError {
-            NSLog("Could not fetch. \(error), \(error.userInfo)")
+        } catch {
             completionHandler(nil)
         }
-        NSLog("latest: \(latestUpdatedAt)")
         InfoControllerAPI.getListUsingGET2(updatedAfter: latestUpdatedAt) { (infos: [Info]?, error: Error?) in
             
             if (infos != nil) {
-                
-                NSLog("start saving infos")
                 for info in infos! {
                     self.save(info: info)
                 }
-                NSLog("finished saving infos: \(infos!.count)")
                 completionHandler(infos!.count)
                 UserDefaults.standard.set(Date(), forKey: self.LAST_REFRESH)
             }

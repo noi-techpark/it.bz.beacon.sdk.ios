@@ -38,20 +38,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let manager = BZNearbyBeaconManager.instance
         manager.refreshBeacons() {infos in
-            NSLog("returned from refreshBeacons")
             if (infos != nil) {
                 if (infos! > 0) {
                     completionHandler(.newData)
-                    NSLog("New Data: \(infos!)")
                 } else {
                     completionHandler(.noData)
-                    NSLog("No Data")
                 }
             } else {
                 completionHandler(.failed)
-                NSLog("Failed")
             }
-        
         }
     }
 }
