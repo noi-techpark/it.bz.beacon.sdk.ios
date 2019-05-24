@@ -41,7 +41,8 @@ open class InfoControllerAPI {
   "location" : "location",
   "id" : "id",
   "floor" : "floor",
-  "longitude" : 6.027456183070403
+  "longitude" : 6.027456183070403,
+  "updatedAt" : 5
 }}]
      
      - parameter instanceId: (path) instanceId 
@@ -65,10 +66,11 @@ open class InfoControllerAPI {
     /**
      View a list of all infos
      
+     - parameter updatedAfter: (query) updatedAfter (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getListUsingGET2(completion: @escaping ((_ data: [Info]?,_ error: Error?) -> Void)) {
-        getListUsingGET2WithRequestBuilder().execute { (response, error) -> Void in
+    open class func getListUsingGET2(updatedAfter: Int64? = nil, completion: @escaping ((_ data: [Info]?,_ error: Error?) -> Void)) {
+        getListUsingGET2WithRequestBuilder(updatedAfter: updatedAfter).execute { (response, error) -> Void in
             completion(response?.body, error);
         }
     }
@@ -91,7 +93,8 @@ open class InfoControllerAPI {
   "location" : "location",
   "id" : "id",
   "floor" : "floor",
-  "longitude" : 6.027456183070403
+  "longitude" : 6.027456183070403,
+  "updatedAt" : 5
 }, {
   "website" : "website",
   "address" : "address",
@@ -106,18 +109,24 @@ open class InfoControllerAPI {
   "location" : "location",
   "id" : "id",
   "floor" : "floor",
-  "longitude" : 6.027456183070403
+  "longitude" : 6.027456183070403,
+  "updatedAt" : 5
 } ]}]
+     
+     - parameter updatedAfter: (query) updatedAfter (optional)
 
      - returns: RequestBuilder<[Info]> 
      */
-    open class func getListUsingGET2WithRequestBuilder() -> RequestBuilder<[Info]> {
+    open class func getListUsingGET2WithRequestBuilder(updatedAfter: Int64? = nil) -> RequestBuilder<[Info]> {
         let path = "/v1/infos"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
 
         let url = NSURLComponents(string: URLString)
-
+        url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
+            "updatedAfter": updatedAfter?.encodeToJSON()
+        ])
+        
 
         let requestBuilder: RequestBuilder<[Info]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
@@ -154,7 +163,8 @@ open class InfoControllerAPI {
   "location" : "location",
   "id" : "id",
   "floor" : "floor",
-  "longitude" : 6.027456183070403
+  "longitude" : 6.027456183070403,
+  "updatedAt" : 5
 }}]
      
      - parameter id: (path) id 
@@ -206,7 +216,8 @@ open class InfoControllerAPI {
   "location" : "location",
   "id" : "id",
   "floor" : "floor",
-  "longitude" : 6.027456183070403
+  "longitude" : 6.027456183070403,
+  "updatedAt" : 5
 }}]
      
      - parameter major: (path) major 

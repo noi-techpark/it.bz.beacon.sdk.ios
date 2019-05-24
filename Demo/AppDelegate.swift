@@ -1,13 +1,14 @@
 import UIKit
+import Beacon_SDK_iOS
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+   
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UIApplication.shared.setMinimumBackgroundFetchInterval(1800)
         return true
     }
 
@@ -33,6 +34,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 
+        let manager = BZNearbyBeaconManager.instance
+        manager.refreshBeacons() {infos in
+            NSLog("returned from refreshBeacons")
+            if (infos != nil) {
+                if (infos! > 0) {
+                    completionHandler(.newData)
+                    NSLog("New Data: \(infos!)")
+                } else {
+                    completionHandler(.noData)
+                    NSLog("No Data")
+                }
+            } else {
+                completionHandler(.failed)
+                NSLog("Failed")
+            }
+        
+        }
+    }
 }
 

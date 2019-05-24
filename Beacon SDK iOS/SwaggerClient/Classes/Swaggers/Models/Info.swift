@@ -23,12 +23,13 @@ open class Info: Codable {
     public var minor: Int?
     public var name: String?
     public var namespace: String?
+    public var updatedAt: Int64?
     public var uuid: UUID?
     public var website: String?
 
 
     
-    public init(address: String?, cap: String?, floor: String?, id: String?, instanceId: String?, latitude: Double?, location: String?, longitude: Double?, major: Int?, minor: Int?, name: String?, namespace: String?, uuid: UUID?, website: String?) {
+    public init(address: String?, cap: String?, floor: String?, id: String?, instanceId: String?, latitude: Double?, location: String?, longitude: Double?, major: Int?, minor: Int?, name: String?, namespace: String?, updatedAt: Int64?, uuid: UUID?, website: String?) {
         self.address = address
         self.cap = cap
         self.floor = floor
@@ -41,6 +42,7 @@ open class Info: Codable {
         self.minor = minor
         self.name = name
         self.namespace = namespace
+        self.updatedAt = updatedAt
         self.uuid = uuid
         self.website = website
     }
@@ -64,6 +66,7 @@ open class Info: Codable {
         try container.encodeIfPresent(minor, forKey: "minor")
         try container.encodeIfPresent(name, forKey: "name")
         try container.encodeIfPresent(namespace, forKey: "namespace")
+        try container.encodeIfPresent(updatedAt, forKey: "updatedAt")
         try container.encodeIfPresent(uuid, forKey: "uuid")
         try container.encodeIfPresent(website, forKey: "website")
     }
@@ -85,6 +88,7 @@ open class Info: Codable {
         minor = try container.decodeIfPresent(Int.self, forKey: "minor")
         name = try container.decodeIfPresent(String.self, forKey: "name")
         namespace = try container.decodeIfPresent(String.self, forKey: "namespace")
+        updatedAt = try container.decodeIfPresent(Int64.self, forKey: "updatedAt")
         uuid = try container.decodeIfPresent(UUID.self, forKey: "uuid")
         website = try container.decodeIfPresent(String.self, forKey: "website")
     }

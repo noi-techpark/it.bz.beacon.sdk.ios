@@ -1,3 +1,11 @@
+//
+//  BeaconInfoSDK+CoreDataProperties.swift
+//  
+//
+//  Created by Johannes Andrich on 23.05.19.
+//
+//
+
 import Foundation
 import CoreData
 
@@ -22,5 +30,6 @@ extension BeaconInfoSDK {
     @NSManaged public var namespace: String?
     @NSManaged public var uuid: String?
     @NSManaged public var website: String?
+    @NSManaged public var updatedAt: Int64
 
 }

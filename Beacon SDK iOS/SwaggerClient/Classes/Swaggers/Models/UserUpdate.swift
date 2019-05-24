@@ -13,15 +13,13 @@ open class UserUpdate: Codable {
 
     public var email: String
     public var name: String
-    public var password: String?
     public var surname: String
 
 
     
-    public init(email: String, name: String, password: String?, surname: String) {
+    public init(email: String, name: String, surname: String) {
         self.email = email
         self.name = name
-        self.password = password
         self.surname = surname
     }
     
@@ -34,7 +32,6 @@ open class UserUpdate: Codable {
 
         try container.encode(email, forKey: "email")
         try container.encode(name, forKey: "name")
-        try container.encodeIfPresent(password, forKey: "password")
         try container.encode(surname, forKey: "surname")
     }
 
@@ -45,7 +42,6 @@ open class UserUpdate: Codable {
 
         email = try container.decode(String.self, forKey: "email")
         name = try container.decode(String.self, forKey: "name")
-        password = try container.decodeIfPresent(String.self, forKey: "password")
         surname = try container.decode(String.self, forKey: "surname")
     }
 }
