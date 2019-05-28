@@ -12,6 +12,49 @@ import Alamofire
 
 open class UserControllerAPI {
     /**
+     Update a user
+     
+     - parameter id: (path) id 
+     - parameter passwordChange: (body) passwordChange 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func changePasswordUsingPATCH(id: Int64, passwordChange: PasswordChange, completion: @escaping ((_ data: BaseMessage?,_ error: Error?) -> Void)) {
+        changePasswordUsingPATCHWithRequestBuilder(id: id, passwordChange: passwordChange).execute { (response, error) -> Void in
+            completion(response?.body, error);
+        }
+    }
+
+
+    /**
+     Update a user
+     - PATCH /v1/admin/users/{id}/change-password
+     - API Key:
+       - type: apiKey Authorization 
+       - name: JWT
+     - examples: [{contentType=application/json, example={
+  "message" : "message"
+}}]
+     
+     - parameter id: (path) id 
+     - parameter passwordChange: (body) passwordChange 
+
+     - returns: RequestBuilder<BaseMessage> 
+     */
+    open class func changePasswordUsingPATCHWithRequestBuilder(id: Int64, passwordChange: PasswordChange) -> RequestBuilder<BaseMessage> {
+        var path = "/v1/admin/users/{id}/change-password"
+        path = path.replacingOccurrences(of: "{id}", with: "\(id)", options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: passwordChange)
+
+        let url = NSURLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<BaseMessage>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
      Create a user
      
      - parameter userCreation: (body) userCreation 
@@ -33,6 +76,7 @@ open class UserControllerAPI {
      - examples: [{contentType=application/json, example={
   "surname" : "surname",
   "name" : "name",
+  "admin" : true,
   "id" : 0,
   "email" : "email",
   "username" : "username"
@@ -117,12 +161,14 @@ open class UserControllerAPI {
      - examples: [{contentType=application/json, example=[ {
   "surname" : "surname",
   "name" : "name",
+  "admin" : true,
   "id" : 0,
   "email" : "email",
   "username" : "username"
 }, {
   "surname" : "surname",
   "name" : "name",
+  "admin" : true,
   "id" : 0,
   "email" : "email",
   "username" : "username"
@@ -165,6 +211,7 @@ open class UserControllerAPI {
      - examples: [{contentType=application/json, example={
   "surname" : "surname",
   "name" : "name",
+  "admin" : true,
   "id" : 0,
   "email" : "email",
   "username" : "username"
@@ -192,6 +239,49 @@ open class UserControllerAPI {
      Update a user
      
      - parameter id: (path) id 
+     - parameter passwordReset: (body) passwordReset 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func resetPasswordUsingPATCH(id: Int64, passwordReset: PasswordReset, completion: @escaping ((_ data: BaseMessage?,_ error: Error?) -> Void)) {
+        resetPasswordUsingPATCHWithRequestBuilder(id: id, passwordReset: passwordReset).execute { (response, error) -> Void in
+            completion(response?.body, error);
+        }
+    }
+
+
+    /**
+     Update a user
+     - PATCH /v1/admin/users/{id}/reset-password
+     - API Key:
+       - type: apiKey Authorization 
+       - name: JWT
+     - examples: [{contentType=application/json, example={
+  "message" : "message"
+}}]
+     
+     - parameter id: (path) id 
+     - parameter passwordReset: (body) passwordReset 
+
+     - returns: RequestBuilder<BaseMessage> 
+     */
+    open class func resetPasswordUsingPATCHWithRequestBuilder(id: Int64, passwordReset: PasswordReset) -> RequestBuilder<BaseMessage> {
+        var path = "/v1/admin/users/{id}/reset-password"
+        path = path.replacingOccurrences(of: "{id}", with: "\(id)", options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: passwordReset)
+
+        let url = NSURLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<BaseMessage>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Update a user
+     
+     - parameter id: (path) id 
      - parameter userUpdate: (body) userUpdate 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -211,6 +301,7 @@ open class UserControllerAPI {
      - examples: [{contentType=application/json, example={
   "surname" : "surname",
   "name" : "name",
+  "admin" : true,
   "id" : 0,
   "email" : "email",
   "username" : "username"

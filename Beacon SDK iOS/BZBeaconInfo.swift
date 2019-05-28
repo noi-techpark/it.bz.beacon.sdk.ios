@@ -14,6 +14,7 @@ public class BZBeaconInfo: NSObject {
     public var minor: Int32 = 0
     public var name: String?
     public var namespace: String?
+    public var updatedAt: Int64 = 0
     public var uuid: String?
     public var website: String?
     
@@ -31,6 +32,9 @@ public class BZBeaconInfo: NSObject {
         beacon.minor = Int32(info.minor!)
         beacon.name = info.name
         beacon.namespace = info.namespace
+        if (info.updatedAt != nil) {
+            beacon.updatedAt = info.updatedAt!
+        }
         beacon.uuid = info.uuid?.uuidString
         beacon.website = info.website
         return beacon
@@ -50,6 +54,7 @@ public class BZBeaconInfo: NSObject {
         beacon.minor = beaconInfo.value(forKey: "minor") as! Int32
         beacon.name = beaconInfo.value(forKey: "name") as? String
         beacon.namespace = beaconInfo.value(forKey: "namespace") as? String
+        beacon.updatedAt = beaconInfo.value(forKey: "updatedAt") as! Int64
         beacon.uuid = beaconInfo.value(forKey: "uuid") as? String
         beacon.website = beaconInfo.value(forKey: "website") as? String
         return beacon

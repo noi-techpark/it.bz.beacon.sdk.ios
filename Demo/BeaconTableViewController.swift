@@ -9,7 +9,6 @@ class BeaconTableViewController: UITableViewController, BZBeaconScannerDelegate 
         super.viewDidLoad()
 
         let manager = BZNearbyBeaconManager.instance
-        manager.refreshBeacons()
         manager.setBeaconScannerDelegate(beaconScannerDelegate: self)
         manager.startScanning()
     }

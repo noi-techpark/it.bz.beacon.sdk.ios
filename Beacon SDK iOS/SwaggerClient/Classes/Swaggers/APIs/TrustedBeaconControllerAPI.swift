@@ -92,6 +92,7 @@ open class TrustedBeaconControllerAPI {
 
         let url = NSURLComponents(string: URLString)
 
+
         let requestBuilder: RequestBuilder<Beacon>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)

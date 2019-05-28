@@ -36,6 +36,8 @@
 		3191A0BE2243DE62006711BC /* Beacon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3191A0BC2243DE62006711BC /* Beacon.xcdatamodeld */; };
 		3191A0C42243DF50006711BC /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A0C32243DF50006711BC /* PersistentContainer.swift */; };
 		3191A0C72243E1F1006711BC /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3191A0C62243E1F1006711BC /* CoreBluetooth.framework */; };
+		31C153902296A7870084B25B /* PasswordChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C1538E2296A7870084B25B /* PasswordChange.swift */; };
+		31C153912296A7870084B25B /* PasswordReset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C1538F2296A7870084B25B /* PasswordReset.swift */; };
 		31E22257224B65C7003AD75B /* TrustedBeaconControllerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22256224B65C7003AD75B /* TrustedBeaconControllerAPI.swift */; };
 		31E22259224B66DA003AD75B /* BeaconBatteryLevelUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22258224B66DA003AD75B /* BeaconBatteryLevelUpdate.swift */; };
 		31E22261224B6775003AD75B /* AuthControllerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E2225B224B6774003AD75B /* AuthControllerAPI.swift */; };
@@ -148,6 +150,9 @@
 		3191A0BD2243DE62006711BC /* Beacon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Beacon.xcdatamodel; sourceTree = "<group>"; };
 		3191A0C32243DF50006711BC /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		3191A0C62243E1F1006711BC /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		31C1538B229693F10084B25B /* Beacon2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Beacon2.xcdatamodel; sourceTree = "<group>"; };
+		31C1538E2296A7870084B25B /* PasswordChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordChange.swift; sourceTree = "<group>"; };
+		31C1538F2296A7870084B25B /* PasswordReset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordReset.swift; sourceTree = "<group>"; };
 		31E22256224B65C7003AD75B /* TrustedBeaconControllerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustedBeaconControllerAPI.swift; sourceTree = "<group>"; };
 		31E22258224B66DA003AD75B /* BeaconBatteryLevelUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconBatteryLevelUpdate.swift; sourceTree = "<group>"; };
 		31E2225B224B6774003AD75B /* AuthControllerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthControllerAPI.swift; sourceTree = "<group>"; };
@@ -247,15 +252,15 @@
 			children = (
 				310618522244CCED00F1C75F /* APIs */,
 				310618572244CCED00F1C75F /* Models */,
-				310618502244CCED00F1C75F /* APIHelper.swift */,
 				310618512244CCED00F1C75F /* AlamofireImplementations.swift */,
-				310618542244CCED00F1C75F /* CodableHelper.swift */,
-				310618552244CCED00F1C75F /* JSONEncodableEncoding.swift */,
+				310618502244CCED00F1C75F /* APIHelper.swift */,
 				310618562244CCED00F1C75F /* APIs.swift */,
+				310618542244CCED00F1C75F /* CodableHelper.swift */,
+				3106185D2244CCED00F1C75F /* Configuration.swift */,
 				3106185A2244CCED00F1C75F /* Extensions.swift */,
+				310618552244CCED00F1C75F /* JSONEncodableEncoding.swift */,
 				3106185B2244CCED00F1C75F /* JSONEncodingHelper.swift */,
 				3106185C2244CCED00F1C75F /* Models.swift */,
-				3106185D2244CCED00F1C75F /* Configuration.swift */,
 			);
 			path = Swaggers;
 			sourceTree = "<group>";
@@ -266,11 +271,11 @@
 				31E2225B224B6774003AD75B /* AuthControllerAPI.swift */,
 				31E22292224B6A11003AD75B /* BeaconControllerAPI.swift */,
 				31E22295224B6A11003AD75B /* ImageControllerAPI.swift */,
+				310618532244CCED00F1C75F /* InfoControllerAPI.swift */,
 				31E22296224B6A11003AD75B /* IssueControllerAPI.swift */,
 				31E22293224B6A11003AD75B /* OrderControllerAPI.swift */,
-				31E22294224B6A11003AD75B /* UserControllerAPI.swift */,
 				31E22256224B65C7003AD75B /* TrustedBeaconControllerAPI.swift */,
-				310618532244CCED00F1C75F /* InfoControllerAPI.swift */,
+				31E22294224B6A11003AD75B /* UserControllerAPI.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -282,6 +287,8 @@
 				31E22278224B6790003AD75B /* AuthenticationToken.swift */,
 				31E2226C224B678F003AD75B /* AuthenticationTokenCheck.swift */,
 				31E2226F224B678F003AD75B /* AuthenticationTokenCheckRequest.swift */,
+				310618592244CCED00F1C75F /* BaseMessage.swift */,
+				31E22258224B66DA003AD75B /* BeaconBatteryLevelUpdate.swift */,
 				31E2229D224B6A27003AD75B /* Beacon.swift */,
 				31E2229E224B6A27003AD75B /* BeaconImage.swift */,
 				31E222A0224B6A28003AD75B /* BeaconIssue.swift */,
@@ -289,20 +296,20 @@
 				31E2229F224B6A27003AD75B /* BeaconOrderData.swift */,
 				31E2226D224B678F003AD75B /* BeaconUpdate.swift */,
 				31E2226B224B678F003AD75B /* File.swift */,
+				310618582244CCED00F1C75F /* Info.swift */,
 				31E22271224B678F003AD75B /* InputStream.swift */,
 				31E22266224B678F003AD75B /* IssueCreation.swift */,
 				31E22274224B6790003AD75B /* IssueSolution.swift */,
 				31E2226E224B678F003AD75B /* ManufacturerOrder.swift */,
 				31E22267224B678F003AD75B /* ModelURL.swift */,
+				31C1538E2296A7870084B25B /* PasswordChange.swift */,
+				31C1538F2296A7870084B25B /* PasswordReset.swift */,
 				31E22272224B678F003AD75B /* PendingConfiguration.swift */,
 				31E22273224B678F003AD75B /* Resource.swift */,
 				31E22279224B6790003AD75B /* URI.swift */,
 				31E22269224B678F003AD75B /* User.swift */,
 				31E22276224B6790003AD75B /* UserCreation.swift */,
 				31E22277224B6790003AD75B /* UserUpdate.swift */,
-				310618582244CCED00F1C75F /* Info.swift */,
-				31E22258224B66DA003AD75B /* BeaconBatteryLevelUpdate.swift */,
-				310618592244CCED00F1C75F /* BaseMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -503,6 +510,11 @@
 					};
 					3175CEAA224A57E8006C4C4A = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					3191A0AE2243D095006711BC = {
 						CreatedOnToolsVersion = 10.1;
@@ -733,6 +745,7 @@
 				3168F80222452A310012B033 /* BZBeaconScannerDelegate.swift in Sources */,
 				31E222A4224B6A28003AD75B /* BeaconOrderData.swift in Sources */,
 				31E2228A224B6790003AD75B /* IssueSolution.swift in Sources */,
+				31C153912296A7870084B25B /* PasswordReset.swift in Sources */,
 				31E2228D224B6790003AD75B /* UserUpdate.swift in Sources */,
 				3191A0BE2243DE62006711BC /* Beacon.xcdatamodeld in Sources */,
 				31E22285224B6790003AD75B /* AuthenticationTokenCheckRequest.swift in Sources */,
@@ -747,6 +760,7 @@
 				31E22297224B6A11003AD75B /* BeaconControllerAPI.swift in Sources */,
 				310618662244CCED00F1C75F /* Extensions.swift in Sources */,
 				31E22281224B6790003AD75B /* File.swift in Sources */,
+				31C153902296A7870084B25B /* PasswordChange.swift in Sources */,
 				31E2228F224B6790003AD75B /* URI.swift in Sources */,
 				31E22287224B6790003AD75B /* InputStream.swift in Sources */,
 				31E22280224B6790003AD75B /* AuthenticationRequest.swift in Sources */,
@@ -1105,9 +1119,10 @@
 		3191A0BC2243DE62006711BC /* Beacon.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				31C1538B229693F10084B25B /* Beacon2.xcdatamodel */,
 				3191A0BD2243DE62006711BC /* Beacon.xcdatamodel */,
 			);
-			currentVersion = 3191A0BD2243DE62006711BC /* Beacon.xcdatamodel */;
+			currentVersion = 31C1538B229693F10084B25B /* Beacon2.xcdatamodel */;
 			path = Beacon.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
