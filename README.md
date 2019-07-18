@@ -66,3 +66,6 @@ You can modify this method if you need, but always call the completionHandler as
 - KontaktSDK - Creative Commons Attribution NoDerivs (CC-ND)
 - Alamofire - MIT
 
+# Outbound License
+See LICENSE.md
+
