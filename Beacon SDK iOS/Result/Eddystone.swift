@@ -1,6 +1,7 @@
 import Foundation
 
-open class Eddystone : BaseBeaconInfo {
+@objc
+open class Eddystone : NSObject, BaseBeaconInfo {
     
     public var namespace: String?
     public var instanceId:String?
@@ -22,6 +23,7 @@ open class Eddystone : BaseBeaconInfo {
         self.info = info
     }
     
+    @objc
     public func getInfo() -> BZBeaconInfo? {
         return info
     }
