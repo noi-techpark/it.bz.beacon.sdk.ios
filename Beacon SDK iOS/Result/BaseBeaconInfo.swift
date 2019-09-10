@@ -1,5 +1,7 @@
 import Foundation
 
-protocol BaseBeaconInfo {    
+@objc
+public protocol BaseBeaconInfo {
+    @objc
     func getInfo() -> BZBeaconInfo?
 }

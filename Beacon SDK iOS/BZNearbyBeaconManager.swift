@@ -2,6 +2,7 @@ import Foundation
 import KontaktSDK
 import CoreData
 
+@objc
 public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddystoneManagerDelegate, KTKDevicesManagerDelegate {
     
     var beaconManager: KTKBeaconManager!
@@ -11,6 +12,7 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
     var delegate: BZBeaconScannerDelegate?
     let LAST_REFRESH = "LASTREFRESH"
     
+    @objc
     public static let instance: BZNearbyBeaconManager = {
         let instance = BZNearbyBeaconManager()
         return instance
@@ -51,14 +53,17 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
         }
     }
     
+    @objc
     public func setBeaconScannerDelegate(beaconScannerDelegate: BZBeaconScannerDelegate) {
         delegate = beaconScannerDelegate
     }
     
+    @objc
     public func setTrustedApiCredentials(credentials: URLCredential) {
         SwaggerClientAPI.credential = credentials
     }
     
+    @objc
     public func getAllBeacons() -> [BZBeaconInfo] {
         var beacons : [BZBeaconInfo] = []
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: BeaconInfoSDK.entityName)
@@ -79,6 +84,7 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
         return beacons
     }
     
+    @objc
     public func getBeacon(_ id: String) -> BZBeaconInfo? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: BeaconInfoSDK.entityName)
         fetchRequest.fetchLimit = 1
@@ -97,6 +103,7 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
         return nil
     }
     
+    @objc
     public func startScanning() {
         let myProximityUuid = UUID(uuidString: "6a84c716-0f2a-1ce9-f210-6a63bd873dd9")
         let region = KTKBeaconRegion(proximityUUID: myProximityUuid!, identifier: "Beacon Südtirol")
@@ -162,6 +169,7 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
         beaconManager.stopRangingBeacons(in: region)
     }
     
+    @objc
     public func eddystoneManager(_ manager: KTKEddystoneManager, didDiscover eddystones: Set<KTKEddystone>, in region: KTKEddystoneRegion?) {
         for eddystone in eddystones {
             if let instanceId = eddystone.eddystoneUID?.instanceID {
@@ -170,6 +178,7 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
         }
     }
     
+    @objc
     public func devicesManager(_ manager: KTKDevicesManager, didDiscover devices: [KTKNearbyDevice]) {
         if (SwaggerClientAPI.credential != nil) {
             for device in devices {
@@ -191,7 +200,8 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
         }
     }
     
-    public func refreshBeacons(completionHandler: @escaping (_ result: Int?) -> Void) {
+    @objc
+    public func refreshBeacons(completionHandler: @escaping (_ result: Int) -> Void) {
         let fetchRequest:NSFetchRequest<BeaconInfoSDK> = BeaconInfoSDK.fetchRequest()
         fetchRequest.fetchLimit = 1
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "updatedAt", ascending: false)]
@@ -203,7 +213,7 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
                 latestUpdatedAt = newestInfo!.updatedAt
             }
         } catch {
-            completionHandler(nil)
+            completionHandler(-1)
         }
         InfoControllerAPI.getListUsingGET2(updatedAfter: latestUpdatedAt) { (infos: [Info]?, error: Error?) in
             
@@ -215,7 +225,7 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
                 UserDefaults.standard.set(Date(), forKey: self.LAST_REFRESH)
             }
             else {
-                completionHandler(nil)
+                completionHandler(-1)
             }
         }
         

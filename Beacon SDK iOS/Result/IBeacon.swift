@@ -1,6 +1,7 @@
 import Foundation
 
-open class IBeacon : BaseBeaconInfo {
+@objc
+open class IBeacon : NSObject, BaseBeaconInfo {
     
     public var uuid: String?
     public var major: Int32?
@@ -14,6 +15,7 @@ open class IBeacon : BaseBeaconInfo {
         self.info = info
     }
     
+    @objc
     public func getInfo() -> BZBeaconInfo? {
         return info
     }

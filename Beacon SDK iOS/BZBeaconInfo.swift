@@ -1,5 +1,6 @@
 import Foundation
 
+@objcMembers
 public class BZBeaconInfo: NSObject {
     
     public var address: String?
