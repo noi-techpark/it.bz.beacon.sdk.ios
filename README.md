@@ -62,3 +62,10 @@ This sets the update in seconds. 30 Minutes as in this example is the minimum.
 ```
 You can modify this method if you need, but always call the completionHandler as in this example since this is important for future scheduling of the task!
 
+# Inbound Licenses
+- KontaktSDK - Creative Commons Attribution NoDerivs (CC-ND)
+- Alamofire - MIT
+
+# Outbound License
+See LICENSE.md
+
