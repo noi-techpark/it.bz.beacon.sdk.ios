@@ -22,6 +22,7 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
         super.init()
         Kontakt.setAPIKey(" ")
         beaconManager = KTKBeaconManager(delegate: self)
+        beaconManager.requestLocationAlwaysAuthorization()
         eddystoneManager = KTKEddystoneManager(delegate: self)
         secureProfileManager = KTKDevicesManager(delegate: self)
         
@@ -38,18 +39,7 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
         }
         else {
             refreshBeacons() {infos in
-                
             }
-        }
-        
-        switch KTKBeaconManager.locationAuthorizationStatus() {
-        case .notDetermined:
-            break
-        case .denied, .restricted:
-            NSLog("No Authorization")
-            break
-        case .authorizedWhenInUse, .authorizedAlways:
-            startScanning()
         }
     }
     
@@ -107,7 +97,7 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
     public func startScanning() {
         let myProximityUuid = UUID(uuidString: "6a84c716-0f2a-1ce9-f210-6a63bd873dd9")
         let region = KTKBeaconRegion(proximityUUID: myProximityUuid!, identifier: "Beacon Südtirol")
-        
+
         if KTKBeaconManager.isMonitoringAvailable() {
             beaconManager.stopMonitoring(for: region)
             beaconManager.startMonitoring(for: region)
@@ -117,8 +107,8 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
             NSLog("Device does not support monitoring!")
         }
         
-        let eddystoneRegion1 = KTKEddystoneRegion(namespaceID: "6a84c7166a63bd873dd9")
-        eddystoneManager.startEddystoneDiscovery(in: eddystoneRegion1)
+        let eddystoneRegion = KTKEddystoneRegion(namespaceID: "6a84c7166a63bd873dd9")
+        eddystoneManager.startEddystoneDiscovery(in: eddystoneRegion)
         NSLog("Started scanning for Eddystone beacons")
         
         secureProfileManager.startDevicesDiscovery()
@@ -216,7 +206,6 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
             completionHandler(-1)
         }
         InfoControllerAPI.getListUsingGET2(updatedAfter: latestUpdatedAt) { (infos: [Info]?, error: Error?) in
-            
             if (infos != nil) {
                 for info in infos! {
                     self.save(info: info)
@@ -228,7 +217,6 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
                 completionHandler(-1)
             }
         }
-        
     }
     
     func handleEddystone(eddystone: KTKEddystone, info: Info?, error: Error?) {
