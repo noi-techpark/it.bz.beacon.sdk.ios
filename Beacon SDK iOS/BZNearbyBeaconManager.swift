@@ -11,6 +11,8 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
     var managedContext: NSManagedObjectContext!
     var delegate: BZBeaconScannerDelegate?
     let LAST_REFRESH = "LASTREFRESH"
+    var startRequested = false
+    var scanning = false;
     
     @objc
     public static let instance: BZNearbyBeaconManager = {
@@ -22,6 +24,7 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
         super.init()
         Kontakt.setAPIKey(" ")
         beaconManager = KTKBeaconManager(delegate: self)
+        beaconManager.requestLocationAlwaysAuthorization()
         eddystoneManager = KTKEddystoneManager(delegate: self)
         secureProfileManager = KTKDevicesManager(delegate: self)
         
@@ -38,18 +41,7 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
         }
         else {
             refreshBeacons() {infos in
-                
             }
-        }
-        
-        switch KTKBeaconManager.locationAuthorizationStatus() {
-        case .notDetermined:
-            break
-        case .denied, .restricted:
-            NSLog("No Authorization")
-            break
-        case .authorizedWhenInUse, .authorizedAlways:
-            startScanning()
         }
     }
     
@@ -61,6 +53,11 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
     @objc
     public func setTrustedApiCredentials(credentials: URLCredential) {
         SwaggerClientAPI.credential = credentials
+    }
+    
+    @objc
+    public func isScanning() -> Bool {
+        return scanning
     }
     
     @objc
@@ -105,23 +102,31 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
     
     @objc
     public func startScanning() {
-        let myProximityUuid = UUID(uuidString: "6a84c716-0f2a-1ce9-f210-6a63bd873dd9")
-        let region = KTKBeaconRegion(proximityUUID: myProximityUuid!, identifier: "Beacon Südtirol")
-        
-        if KTKBeaconManager.isMonitoringAvailable() {
-            beaconManager.stopMonitoring(for: region)
-            beaconManager.startMonitoring(for: region)
-            NSLog("Started scanning for iBeacons")
+        startRequested = true
+        if (!scanning) {
+            scanning = true
+            let myProximityUuid = UUID(uuidString: "6a84c716-0f2a-1ce9-f210-6a63bd873dd9")
+            let region = KTKBeaconRegion(proximityUUID: myProximityUuid!, identifier: "Beacon Südtirol")
+            
+            switch KTKBeaconManager.locationAuthorizationStatus() {
+            case .authorizedAlways:
+                if KTKBeaconManager.isMonitoringAvailable() {
+                    beaconManager.stopMonitoring(for: region)
+                    beaconManager.startMonitoring(for: region)
+//                    NSLog("Started scanning for iBeacons")
+                }
+                else {
+                    NSLog("Device does not support monitoring!")
+                }
+                break
+            default: break
+            }
+            
+            let eddystoneRegion = KTKEddystoneRegion(namespaceID: "6a84c7166a63bd873dd9")
+            eddystoneManager.startEddystoneDiscovery(in: eddystoneRegion)
+//            NSLog("Started scanning for Eddystone beacons")
+            secureProfileManager.startDevicesDiscovery()
         }
-        else {
-            NSLog("Device does not support monitoring!")
-        }
-        
-        let eddystoneRegion1 = KTKEddystoneRegion(namespaceID: "6a84c7166a63bd873dd9")
-        eddystoneManager.startEddystoneDiscovery(in: eddystoneRegion1)
-        NSLog("Started scanning for Eddystone beacons")
-        
-        secureProfileManager.startDevicesDiscovery()
     }
     
     func stopRanging() {
@@ -133,39 +138,47 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
         beaconManager.stopMonitoringForAllRegions()
     }
     
+    @objc
     public func stopScanning() {
+        scanning = false
+        startRequested = false
         stopRanging()
         stopMonitoring()
     }
     
-    private func beaconManager(_ manager: KTKBeaconManager, didRangeBeacons beacons: [CLBeacon], in region: KTKBeaconRegion) {
+    public func beaconManager(_ manager: KTKBeaconManager, didRangeBeacons beacons: [CLBeacon], in region: KTKBeaconRegion) {
         for beacon in beacons {
             InfoControllerAPI.getiBeaconUsingGET(major: Int(truncating: beacon.major), minor: Int(truncating: beacon.minor)) { (info: Info?, error: Error?) in self.handleIBeacon(iBeacon: beacon, info: info, error: error) }
         }
     }
     
-    private func beaconManager(_ manager: KTKBeaconManager, didChangeLocationAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == .denied {
-            stopScanning()
+    public func beaconManager(_ manager: KTKBeaconManager, didChangeLocationAuthorizationStatus status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse, .authorizedAlways:
+            if (startRequested) {
+                startScanning()
+            }
+            break
+        default: scanning = false
         }
     }
     
-    private func beaconManager(_ manager: KTKBeaconManager, didStartMonitoringFor region: KTKBeaconRegion) {
-        NSLog("did start monitoring for region \(region.identifier)")
+    public func beaconManager(_ manager: KTKBeaconManager, didStartMonitoringFor region: KTKBeaconRegion) {
+//        NSLog("did start monitoring for region \(region.identifier)")
     }
     
-    private func beaconManager(_ manager: KTKBeaconManager, monitoringDidFailFor region: KTKBeaconRegion?, withError error: Error?) {
+    public func beaconManager(_ manager: KTKBeaconManager, monitoringDidFailFor region: KTKBeaconRegion?, withError error: Error?) {
         NSLog("monitoring did fail: \((error?.localizedDescription)!)")
     }
     
-    private func beaconManager(_ manager: KTKBeaconManager, didEnter region: KTKBeaconRegion) {
-        NSLog("did enter region \(region.identifier)")
+    public func beaconManager(_ manager: KTKBeaconManager, didEnter region: KTKBeaconRegion) {
+//        NSLog("did enter region \(region.identifier)")
         beaconManager.startRangingBeacons(in: region)
-        NSLog("Started ranging for iBeacons")
+//        NSLog("Started ranging for iBeacons")
     }
     
-    private func beaconManager(_ manager: KTKBeaconManager, didExitRegion region: KTKBeaconRegion) {
-        NSLog("did exit region \(region.identifier)")
+    public func beaconManager(_ manager: KTKBeaconManager, didExitRegion region: KTKBeaconRegion) {
+//        NSLog("did exit region \(region.identifier)")
         beaconManager.stopRangingBeacons(in: region)
     }
     
@@ -190,7 +203,7 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
                             
                             TrustedBeaconControllerAPI.updateUsingPATCH1WithRequestBuilder(batteryLevelUpdate: battery, id: nameParts[1]).addCredential().execute { (response, error) in
                                 if error != nil {
-                                    NSLog("Error updating beacon: \(error.debugDescription)")
+//                                    NSLog("Error updating beacon: \(error.debugDescription)")
                                 }
                             }
                         }
@@ -216,7 +229,6 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
             completionHandler(-1)
         }
         InfoControllerAPI.getListUsingGET2(updatedAfter: latestUpdatedAt) { (infos: [Info]?, error: Error?) in
-            
             if (infos != nil) {
                 for info in infos! {
                     self.save(info: info)
@@ -228,7 +240,6 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
                 completionHandler(-1)
             }
         }
-        
     }
     
     func handleEddystone(eddystone: KTKEddystone, info: Info?, error: Error?) {
@@ -342,8 +353,14 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
         }
     }
     
-    private func beaconManager(_ manager: KTKBeaconManager, didDetermineState state: CLRegionState, for region: KTKBeaconRegion) {
-        NSLog("did determine state \(state.rawValue) for region \(region.identifier)")
+    public func beaconManager(_ manager: KTKBeaconManager, didDetermineState state: CLRegionState, for region: KTKBeaconRegion) {
+        switch state {
+        case .inside:
+            beaconManager.startRangingBeacons(in: region)
+        default:
+            break
+        }
+//        NSLog("did determine state \(state.rawValue) for region \(region.identifier)")
     }
     
     lazy var persistentContainer: NSPersistentContainer = {

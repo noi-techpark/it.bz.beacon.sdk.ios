@@ -5,9 +5,9 @@ This repository contains the mobile iOS SDK that can be used in order to read th
 - IDE (XCode 10 recommended)
 - pod (you can get it from https://cocoapods.org/)
 #### 1. Open the pod file of your project
-#### 2. Add the following line to relevant targets
+#### 2. Add the following line to relevant targets (look for latest release in repository and replace "x.y.z")
 ```
-pod 'BZBeaconSDK', '~> 0.0.1'
+pod 'BZBeaconSDK', '~> x.y.z'
 ```
 #### 3. Open "Your App Name".xcworkspace with your IDE
 
@@ -48,7 +48,7 @@ This sets the update in seconds. 30 Minutes as in this example is the minimum.
 
         let manager = BZNearbyBeaconManager.instance
         manager.refreshBeacons() {infos in
-            if (infos != nil) {
+            if (infos != -1) {
                 if (infos! > 0) {
                     completionHandler(.newData)
                 } else {
