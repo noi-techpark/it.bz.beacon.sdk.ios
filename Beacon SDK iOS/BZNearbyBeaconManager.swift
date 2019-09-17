@@ -165,6 +165,7 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
     
     public func beaconManager(_ manager: KTKBeaconManager, didStartMonitoringFor region: KTKBeaconRegion) {
 //        NSLog("did start monitoring for region \(region.identifier)")
+        beaconManager.requestState(for: region)
     }
     
     public func beaconManager(_ manager: KTKBeaconManager, monitoringDidFailFor region: KTKBeaconRegion?, withError error: Error?) {
