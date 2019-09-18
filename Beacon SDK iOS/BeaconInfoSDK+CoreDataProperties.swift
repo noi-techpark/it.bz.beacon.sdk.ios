@@ -1,11 +1,3 @@
-//
-//  BeaconInfoSDK+CoreDataProperties.swift
-//  
-//
-//  Created by Johannes Andrich on 23.05.19.
-//
-//
-
 import Foundation
 import CoreData
 
