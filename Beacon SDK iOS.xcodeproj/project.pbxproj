@@ -36,6 +36,8 @@
 		3191A0BE2243DE62006711BC /* Beacon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3191A0BC2243DE62006711BC /* Beacon.xcdatamodeld */; };
 		3191A0C42243DF50006711BC /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191A0C32243DF50006711BC /* PersistentContainer.swift */; };
 		3191A0C72243E1F1006711BC /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3191A0C62243E1F1006711BC /* CoreBluetooth.framework */; };
+		31B1E9C8232FCAC5001F6F61 /* BatteryLevelInfo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B1E9C6232FCAC5001F6F61 /* BatteryLevelInfo+CoreDataClass.swift */; };
+		31B1E9C9232FCAC5001F6F61 /* BatteryLevelInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B1E9C7232FCAC5001F6F61 /* BatteryLevelInfo+CoreDataProperties.swift */; };
 		31C153902296A7870084B25B /* PasswordChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C1538E2296A7870084B25B /* PasswordChange.swift */; };
 		31C153912296A7870084B25B /* PasswordReset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C1538F2296A7870084B25B /* PasswordReset.swift */; };
 		31E22257224B65C7003AD75B /* TrustedBeaconControllerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E22256224B65C7003AD75B /* TrustedBeaconControllerAPI.swift */; };
@@ -150,6 +152,9 @@
 		3191A0BD2243DE62006711BC /* Beacon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Beacon.xcdatamodel; sourceTree = "<group>"; };
 		3191A0C32243DF50006711BC /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		3191A0C62243E1F1006711BC /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		31B1E9C5232FC18A001F6F61 /* Beacon3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Beacon3.xcdatamodel; sourceTree = "<group>"; };
+		31B1E9C6232FCAC5001F6F61 /* BatteryLevelInfo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BatteryLevelInfo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		31B1E9C7232FCAC5001F6F61 /* BatteryLevelInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BatteryLevelInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		31C1538B229693F10084B25B /* Beacon2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Beacon2.xcdatamodel; sourceTree = "<group>"; };
 		31C1538E2296A7870084B25B /* PasswordChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordChange.swift; sourceTree = "<group>"; };
 		31C1538F2296A7870084B25B /* PasswordReset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordReset.swift; sourceTree = "<group>"; };
@@ -362,6 +367,8 @@
 		3191A0B12243D095006711BC /* Beacon SDK iOS */ = {
 			isa = PBXGroup;
 			children = (
+				31B1E9C6232FCAC5001F6F61 /* BatteryLevelInfo+CoreDataClass.swift */,
+				31B1E9C7232FCAC5001F6F61 /* BatteryLevelInfo+CoreDataProperties.swift */,
 				31E222BA224BD239003AD75B /* Result */,
 				31E222AE224B8292003AD75B /* Swagger */,
 				31E222AA224B71EC003AD75B /* BeaconInfoSDK+CoreDataClass.swift */,
@@ -502,7 +509,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "Johannes Andrich";
 				TargetAttributes = {
 					31554FF5225DF60C0089C2E8 = {
@@ -696,6 +703,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31B1E9C8232FCAC5001F6F61 /* BatteryLevelInfo+CoreDataClass.swift in Sources */,
 				310618622244CCED00F1C75F /* JSONEncodableEncoding.swift in Sources */,
 				31E222C0224BD345003AD75B /* Eddystone.swift in Sources */,
 				3106185E2244CCED00F1C75F /* APIHelper.swift in Sources */,
@@ -733,6 +741,7 @@
 				31E2228A224B6790003AD75B /* IssueSolution.swift in Sources */,
 				31C153912296A7870084B25B /* PasswordReset.swift in Sources */,
 				31E2228D224B6790003AD75B /* UserUpdate.swift in Sources */,
+				31B1E9C9232FCAC5001F6F61 /* BatteryLevelInfo+CoreDataProperties.swift in Sources */,
 				3191A0BE2243DE62006711BC /* Beacon.xcdatamodeld in Sources */,
 				31E22285224B6790003AD75B /* AuthenticationTokenCheckRequest.swift in Sources */,
 				310618682244CCED00F1C75F /* Models.swift in Sources */,
@@ -1105,10 +1114,11 @@
 		3191A0BC2243DE62006711BC /* Beacon.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				31B1E9C5232FC18A001F6F61 /* Beacon3.xcdatamodel */,
 				31C1538B229693F10084B25B /* Beacon2.xcdatamodel */,
 				3191A0BD2243DE62006711BC /* Beacon.xcdatamodel */,
 			);
-			currentVersion = 31C1538B229693F10084B25B /* Beacon2.xcdatamodel */;
+			currentVersion = 31B1E9C5232FC18A001F6F61 /* Beacon3.xcdatamodel */;
 			path = Beacon.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

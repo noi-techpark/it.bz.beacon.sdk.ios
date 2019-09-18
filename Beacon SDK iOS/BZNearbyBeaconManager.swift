@@ -195,17 +195,54 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
     @objc
     public func devicesManager(_ manager: KTKDevicesManager, didDiscover devices: [KTKNearbyDevice]) {
         if (SwaggerClientAPI.credential != nil) {
+            let dateNow = Date()
             for device in devices {
                 if device.batteryLevel > 0 {
                     if (device.name != nil) {
                         let nameParts = device.name!.components(separatedBy: "#")
                         if (nameParts.count > 1) {
-                            let battery = BeaconBatteryLevelUpdate.init(batteryLevel: Int(device.batteryLevel))
+                            let id = nameParts[1]
+                            var dateLastSent = Date(timeIntervalSince1970: TimeInterval(0))
                             
-                            TrustedBeaconControllerAPI.updateUsingPATCH1WithRequestBuilder(batteryLevelUpdate: battery, id: nameParts[1]).addCredential().execute { (response, error) in
-                                if error != nil {
-//                                    NSLog("Error updating beacon: \(error.debugDescription)")
+                            let fetchRequest:NSFetchRequest<BatteryLevelInfo> = BatteryLevelInfo.fetchRequest()
+                            fetchRequest.fetchLimit = 1
+                            let predicate1 = NSPredicate(format: "id == %@", id)
+                            fetchRequest.predicate = predicate1
+                            
+                            do {
+                                let batteryLevelInfos = try managedContext.fetch(fetchRequest)
+                                
+                                if let batteryLevelInfo = batteryLevelInfos.first {
+                                    dateLastSent = Date(timeIntervalSince1970: TimeInterval(batteryLevelInfo.lastSent))
+                                    batteryLevelInfo.setValue(dateNow.timeIntervalSince1970, forKey: "lastUpdated")
+                                    batteryLevelInfo.setValue(Int(device.batteryLevel), forKey: "batteryLevel")
+                                } else {
+                                    let entity = NSEntityDescription.entity(forEntityName: BatteryLevelInfo.entityName, in: managedContext)!
+                                    let batteryLevelInfo = NSManagedObject(entity: entity, insertInto: managedContext)
+                                    
+                                    batteryLevelInfo.setValue(id, forKeyPath: "id")
+                                    batteryLevelInfo.setValue(dateNow.timeIntervalSince1970, forKey: "lastUpdated")
+                                    batteryLevelInfo.setValue(Int(device.batteryLevel), forKey: "batteryLevel")
+                                    
+                                    try managedContext.save()
                                 }
+                                if dateNow.timeIntervalSince(dateLastSent) < 86400 {
+                                    let battery = BeaconBatteryLevelUpdate.init(batteryLevel: Int(device.batteryLevel))
+                                    TrustedBeaconControllerAPI.updateUsingPATCH1WithRequestBuilder(batteryLevelUpdate: battery, id: id).addCredential().execute { (response, error) in
+                                        do {
+                                            let batteryLevelInfos = try self.managedContext.fetch(fetchRequest)
+                                            
+                                            if let batteryLevelInfo = batteryLevelInfos.first {
+                                                batteryLevelInfo.setValue(dateNow.timeIntervalSince1970, forKey: "lastSent")
+                                            }
+                                            try self.managedContext.save()
+                                        } catch let error as NSError {
+                                            NSLog("Could not fetch. \(error), \(error.userInfo)")
+                                        }
+                                    }
+                                }
+                            } catch let error as NSError {
+                                NSLog("Could not fetch. \(error), \(error.userInfo)")
                             }
                         }
                     }
