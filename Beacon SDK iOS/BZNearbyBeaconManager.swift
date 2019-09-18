@@ -147,8 +147,23 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
     }
     
     public func beaconManager(_ manager: KTKBeaconManager, didRangeBeacons beacons: [CLBeacon], in region: KTKBeaconRegion) {
-        for beacon in beacons {
-            InfoControllerAPI.getiBeaconUsingGET(major: Int(truncating: beacon.major), minor: Int(truncating: beacon.minor)) { (info: Info?, error: Error?) in self.handleIBeacon(iBeacon: beacon, info: info, error: error) }
+        for iBeacon in beacons {
+            let fetchRequest:NSFetchRequest<BeaconInfoSDK> = BeaconInfoSDK.fetchRequest()
+            fetchRequest.fetchLimit = 1
+            let predicate1 = NSPredicate(format: "major == %@", iBeacon.major.stringValue)
+            let predicate2 = NSPredicate(format: "minor == %@", iBeacon.minor.stringValue)
+            let predicateCompound = NSCompoundPredicate(type: .and, subpredicates: [predicate1,predicate2])
+            fetchRequest.predicate = predicateCompound
+            
+            do {
+                for beacon in try managedContext.fetch(fetchRequest) as [BeaconInfoSDK]? ?? [] {
+                    if beacon.name != nil {
+                        discoveredIBeaconByCache(iBeacon: iBeacon, beaconInfo: beacon)
+                    }
+                }
+            } catch let error as NSError {
+                NSLog("Could not fetch. \(error), \(error.userInfo)")
+            }
         }
     }
     
@@ -186,8 +201,18 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
     @objc
     public func eddystoneManager(_ manager: KTKEddystoneManager, didDiscover eddystones: Set<KTKEddystone>, in region: KTKEddystoneRegion?) {
         for eddystone in eddystones {
-            if let instanceId = eddystone.eddystoneUID?.instanceID {
-                InfoControllerAPI.getEddyStoneUsingGET(instanceId: instanceId) { (info: Info?, error: Error?) in self.handleEddystone(eddystone: eddystone, info: info, error: error) }
+            let fetchRequest:NSFetchRequest<BeaconInfoSDK> = BeaconInfoSDK.fetchRequest()
+            fetchRequest.fetchLimit = 1
+            fetchRequest.predicate = NSPredicate(format: "instanceId == %@", eddystone.eddystoneUID!.instanceID)
+            
+            do {
+                for beacon in try managedContext.fetch(fetchRequest) as [BeaconInfoSDK]? ?? [] {
+                    if beacon.name != nil {
+                        discoveredEddystoneByCache(eddystone: eddystone, beaconInfo: beacon)
+                    }
+                }
+            } catch let error as NSError {
+                NSLog("Could not fetch. \(error), \(error.userInfo)")
             }
         }
     }
@@ -195,17 +220,54 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
     @objc
     public func devicesManager(_ manager: KTKDevicesManager, didDiscover devices: [KTKNearbyDevice]) {
         if (SwaggerClientAPI.credential != nil) {
+            let dateNow = Date()
             for device in devices {
                 if device.batteryLevel > 0 {
                     if (device.name != nil) {
                         let nameParts = device.name!.components(separatedBy: "#")
                         if (nameParts.count > 1) {
-                            let battery = BeaconBatteryLevelUpdate.init(batteryLevel: Int(device.batteryLevel))
+                            let id = nameParts[1]
+                            var dateLastSent = Date(timeIntervalSince1970: TimeInterval(0))
                             
-                            TrustedBeaconControllerAPI.updateUsingPATCH1WithRequestBuilder(batteryLevelUpdate: battery, id: nameParts[1]).addCredential().execute { (response, error) in
-                                if error != nil {
-//                                    NSLog("Error updating beacon: \(error.debugDescription)")
+                            let fetchRequest:NSFetchRequest<BatteryLevelInfo> = BatteryLevelInfo.fetchRequest()
+                            fetchRequest.fetchLimit = 1
+                            let predicate1 = NSPredicate(format: "id == %@", id)
+                            fetchRequest.predicate = predicate1
+                            
+                            do {
+                                let batteryLevelInfos = try managedContext.fetch(fetchRequest)
+                                
+                                if let batteryLevelInfo = batteryLevelInfos.first {
+                                    dateLastSent = Date(timeIntervalSince1970: TimeInterval(batteryLevelInfo.lastSent))
+                                    batteryLevelInfo.setValue(dateNow.timeIntervalSince1970, forKey: "lastUpdated")
+                                    batteryLevelInfo.setValue(Int(device.batteryLevel), forKey: "batteryLevel")
+                                } else {
+                                    let entity = NSEntityDescription.entity(forEntityName: BatteryLevelInfo.entityName, in: managedContext)!
+                                    let batteryLevelInfo = NSManagedObject(entity: entity, insertInto: managedContext)
+                                    
+                                    batteryLevelInfo.setValue(id, forKeyPath: "id")
+                                    batteryLevelInfo.setValue(dateNow.timeIntervalSince1970, forKey: "lastUpdated")
+                                    batteryLevelInfo.setValue(Int(device.batteryLevel), forKey: "batteryLevel")
+                                    
+                                    try managedContext.save()
                                 }
+                                if dateNow.timeIntervalSince(dateLastSent) < 86400 {
+                                    let battery = BeaconBatteryLevelUpdate.init(batteryLevel: Int(device.batteryLevel))
+                                    TrustedBeaconControllerAPI.updateUsingPATCH1WithRequestBuilder(batteryLevelUpdate: battery, id: id).addCredential().execute { (response, error) in
+                                        do {
+                                            let batteryLevelInfos = try self.managedContext.fetch(fetchRequest)
+                                            
+                                            if let batteryLevelInfo = batteryLevelInfos.first {
+                                                batteryLevelInfo.setValue(dateNow.timeIntervalSince1970, forKey: "lastSent")
+                                            }
+                                            try self.managedContext.save()
+                                        } catch let error as NSError {
+                                            NSLog("Could not fetch. \(error), \(error.userInfo)")
+                                        }
+                                    }
+                                }
+                            } catch let error as NSError {
+                                NSLog("Could not fetch. \(error), \(error.userInfo)")
                             }
                         }
                     }
@@ -243,76 +305,11 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
         }
     }
     
-    func handleEddystone(eddystone: KTKEddystone, info: Info?, error: Error?) {
-        if (info != nil) {
-            save(info: info!)
-            discoveredEddystoneByInfo(eddystone: eddystone, info: info!)
-        }
-        else {
-            let fetchRequest:NSFetchRequest<BeaconInfoSDK> = BeaconInfoSDK.fetchRequest()
-            fetchRequest.fetchLimit = 1
-            fetchRequest.predicate = NSPredicate(format: "instanceId == %@", eddystone.eddystoneUID!.instanceID)
-            
-            do {
-                for beacon in try managedContext.fetch(fetchRequest) as [BeaconInfoSDK]? ?? [] {
-                    if beacon.name != nil {
-                        discoveredEddystoneByCache(eddystone: eddystone, beaconInfo: beacon)
-                    }
-                }
-            } catch let error as NSError {
-                NSLog("Could not fetch. \(error), \(error.userInfo)")
-            }
-        }
-    }
-    
-    func handleIBeacon(iBeacon: CLBeacon, info: Info?, error: Error?) {
-        if (info != nil) {
-            save(info: info!)
-            discoveredIBeaconByInfo(iBeacon: iBeacon, info: info!)
-        }
-        else {
-            let fetchRequest:NSFetchRequest<BeaconInfoSDK> = BeaconInfoSDK.fetchRequest()
-            fetchRequest.fetchLimit = 1
-            let predicate1 = NSPredicate(format: "major == %@", iBeacon.major.stringValue)
-            let predicate2 = NSPredicate(format: "minor == %@", iBeacon.minor.stringValue)
-            let predicateCompound = NSCompoundPredicate(type: .and, subpredicates: [predicate1,predicate2])
-            fetchRequest.predicate = predicateCompound
-            
-            do {
-                for beacon in try managedContext.fetch(fetchRequest) as [BeaconInfoSDK]? ?? [] {
-                    if beacon.name != nil {
-                        discoveredIBeaconByCache(iBeacon: iBeacon, beaconInfo: beacon)
-                    }
-                }
-            } catch let error as NSError {
-                NSLog("Could not fetch. \(error), \(error.userInfo)")
-            }
-        }
-    }
-    
-    func discoveredIBeaconByInfo(iBeacon: CLBeacon, info: Info) {
-        delegate?.didDiscoverIBeacon(IBeacon(uuid: iBeacon.proximityUUID.uuidString,
-                                             major: Int32(truncating: iBeacon.major),
-                                             minor: Int32(truncating: iBeacon.minor),
-                                             info: BZBeaconInfo.fromInfo(info: info)))
-    }
-    
     func discoveredIBeaconByCache(iBeacon: CLBeacon, beaconInfo: BeaconInfoSDK) {
         delegate?.didDiscoverIBeacon(IBeacon(uuid: iBeacon.proximityUUID.uuidString,
                                              major: Int32(truncating: iBeacon.major),
                                              minor: Int32(truncating: iBeacon.minor),
                                              info: BZBeaconInfo.fromBeaconInfoSDK(beaconInfo: beaconInfo)))
-    }
-    
-    func discoveredEddystoneByInfo(eddystone: KTKEddystone, info: Info) {
-        delegate?.didDiscoverEddystone(Eddystone(namespace: eddystone.eddystoneUID?.namespaceID,
-                                                 instanceId: eddystone.eddystoneUID?.instanceID,
-                                                 url: eddystone.eddystoneURL?.url?.absoluteString,
-                                                 eid: nil,
-                                                 encryptedTelemetry: nil,
-                                                 batteryVoltage: eddystone.eddystoneTLM?.batteryVoltage,
-                                                 temperature:eddystone.eddystoneTLM?.temperature,
-                                                 info: BZBeaconInfo.fromInfo(info: info)))
     }
     
     func discoveredEddystoneByCache(eddystone: KTKEddystone, beaconInfo: BeaconInfoSDK) {
@@ -361,7 +358,6 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
         default:
             break
         }
-//        NSLog("did determine state \(state.rawValue) for region \(region.identifier)")
     }
     
     lazy var persistentContainer: NSPersistentContainer = {
