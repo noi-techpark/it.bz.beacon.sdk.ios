@@ -251,7 +251,7 @@ public class BZNearbyBeaconManager: NSObject, KTKBeaconManagerDelegate, KTKEddys
                                     
                                     try managedContext.save()
                                 }
-                                if dateNow.timeIntervalSince(dateLastSent) < 86400 {
+                                if dateLastSent.timeIntervalSince(dateNow) < -86400 {
                                     let battery = BeaconBatteryLevelUpdate.init(batteryLevel: Int(device.batteryLevel))
                                     TrustedBeaconControllerAPI.updateUsingPATCH1WithRequestBuilder(batteryLevelUpdate: battery, id: id).addCredential().execute { (response, error) in
                                         do {
