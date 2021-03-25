@@ -6,16 +6,16 @@ Pod::Spec.new do |s|
 
   s.description  = "Find nearby beacons of the Beacon Suedtirol - Alto Adige Project, and get all relevant information about them"
 
-  s.homepage     = "https://github.com/noi-techpark/beacon-suedtirol-mobile-sdk-ios"
+  s.homepage     = "https://github.com/noi-techpark/it.bz.beacon.sdk.ios"
 
   s.license      = "MPL 2.0"
 
-  s.author       = { "Konverto AG" => "development@konverto.eu" }
+  s.author       = { "KONVERTO AG" => "development@konverto.eu" }
 
   s.platform     = :ios
-  s.platform     = :ios, "11.0"
+  s.platform     = :ios, "12.0"
 
-  s.source       = { :git => "https://github.com/noi-techpark/beacon-suedtirol-mobile-sdk-ios.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/noi-techpark/it.bz.beacon.sdk.ios.git", :tag => "#{s.version}" }
 
   s.source_files  = "Beacon SDK iOS", "Beacon SDK iOS/**/*.swift"
   s.resources = "Beacon SDK iOS/Beacon.xcdatamodeld"
@@ -24,5 +24,8 @@ Pod::Spec.new do |s|
 
   s.dependency 'KontaktSDK', '~> 2.0'
   s.dependency 'Alamofire', '~> 4.3'
+  
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
 end
