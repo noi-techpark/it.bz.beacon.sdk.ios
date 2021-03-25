@@ -12,7 +12,7 @@ platform :ios do
       workspace: "Beacon SDK iOS.xcworkspace",
       device: "iPhone 8",
       scheme: "Beacon_SDK_iOSTests",
-      xcargs: "-UseModernBuildSystem=NO"
+      xcargs: "-UseModernBuildSystem=YES"
     )
   end
 end
