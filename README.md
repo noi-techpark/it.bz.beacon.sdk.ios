@@ -1,5 +1,8 @@
 # Beacon Suedtirol - Alto Adige SDK iOS
 This repository contains the mobile iOS SDK that can be used in order to read the beacons installed within the Beacon Suedtirol project.
+
+[![CI](https://github.com/noi-techpark/it.bz.beacon.sdk.ios/actions/workflows/ci.yml/badge.svg)](https://github.com/noi-techpark/it.bz.beacon.sdk.ios/actions/workflows/ci.yml)
+
 ## Usage
 #### Prerequisits
 - IDE (XCode 10 recommended)
