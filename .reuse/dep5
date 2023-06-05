@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: it.bz.beacon.admin
+Upstream-Name: it.bz.beacon.sdk.ios
 Upstream-Contact: NOI Techpark <digital@noi.bz.it>
-Source: https://github.com/noi-techpark/it.bz.beacon.admin
+Source: https://github.com/noi-techpark/it.bz.beacon.sdk.ios
 
 Files: .github/* infrastructure/* .gitignore LICENSE.md Gemfile BZBeaconSDK.podspec Podfile Podfile.lock Jenkinsfile-Release swagger/* fastlane/* Demo/Assets.xcassets/* Demo/Base.lproj/* *.plist *.xcworkspacedata *.xcscheme *.pbxproj */Beacon.xcdatamodeld/*
 Copyright: (c) NOI Techpark <digital@noi.bz.it>
