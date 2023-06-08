@@ -1,12 +1,12 @@
-name: Reuse
+name: REUSE Compliance Check
+
 on: push
+
 jobs:
   test:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
-
-      - name: Checkout the code
+      - name: Checkout source code
         uses: actions/checkout@v2
-
       - name: REUSE Compliance Check
         uses: fsfe/reuse-action@v1
