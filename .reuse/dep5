@@ -3,6 +3,6 @@ Upstream-Name: it.bz.beacon.sdk.ios
 Upstream-Contact: NOI Techpark <digital@noi.bz.it>
 Source: https://github.com/noi-techpark/it.bz.beacon.sdk.ios
 
-Files: .github/* infrastructure/* .gitignore LICENSE.md Gemfile BZBeaconSDK.podspec Podfile Podfile.lock Jenkinsfile-Release swagger/* fastlane/* Demo/Assets.xcassets/* Demo/Base.lproj/* *.plist *.xcworkspacedata *.xcscheme *.pbxproj */Beacon.xcdatamodeld/*
+Files: .github/* infrastructure/* .gitignore .pre-commit-config.yaml LICENSE.md Gemfile BZBeaconSDK.podspec Podfile Podfile.lock Jenkinsfile-Release swagger/* fastlane/* Demo/Assets.xcassets/* Demo/Base.lproj/* *.plist *.xcworkspacedata *.xcscheme *.pbxproj */Beacon.xcdatamodeld/*
 Copyright: (c) NOI Techpark <digital@noi.bz.it>
 License: CC0-1.0
