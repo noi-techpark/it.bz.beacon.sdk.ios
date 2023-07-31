@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
   s.exclude_files = "Classes/Exclude"
   s.swift_version = "4.2"
 
-  s.dependency 'KontaktSDK', '~> 2.0'
+  s.dependency 'KontaktSDK', '~> 3.0.26'
   s.dependency 'Alamofire', '~> 4.3'
   
   s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
