@@ -4,21 +4,21 @@ use_frameworks!
 
 target 'Beacon SDK iOS' do
 
-  	pod 'KontaktSDK', :path => 'KontaktSDK.framework'
+  	pod 'KontaktSDK', :git => 'https://github.com/kontaktio/kontakt-ios-sdk.git'
     pod 'Alamofire', '~> 4.3'
 
 end
 
 target 'Beacon_SDK_iOSTests' do
   
-  pod 'KontaktSDK', :path => 'KontaktSDK.framework'
+  pod 'KontaktSDK', :git => 'https://github.com/kontaktio/kontakt-ios-sdk.git'
   pod 'Alamofire', '~> 4.3'
   
 end
 
 target 'Demo' do
       
-    pod 'KontaktSDK', :path => 'KontaktSDK.framework'
+    pod 'KontaktSDK', :git => 'https://github.com/kontaktio/kontakt-ios-sdk.git'
     pod 'Alamofire', '~> 4.3'
       
 end
