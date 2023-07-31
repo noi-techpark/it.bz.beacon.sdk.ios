@@ -4,7 +4,7 @@ use_frameworks!
 
 target 'Beacon SDK iOS' do
 
-  	pod 'KontaktSDK', '~> 2.0', :path => 'KontaktSDK.framework'
+  	pod 'KontaktSDK', :path => 'KontaktSDK.framework'
     pod 'Alamofire', '~> 4.3'
 
 end
