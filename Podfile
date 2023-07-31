@@ -11,14 +11,14 @@ end
 
 target 'Beacon_SDK_iOSTests' do
   
-  pod 'KontaktSDK', '~> 2.0'
+  pod 'KontaktSDK', :path => 'KontaktSDK.framework'
   pod 'Alamofire', '~> 4.3'
   
 end
 
 target 'Demo' do
       
-    pod 'KontaktSDK', '~> 2.0'
+    pod 'KontaktSDK', :path => 'KontaktSDK.framework'
     pod 'Alamofire', '~> 4.3'
       
 end
