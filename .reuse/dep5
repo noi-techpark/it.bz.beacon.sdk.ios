@@ -6,3 +6,7 @@ Source: https://github.com/noi-techpark/it.bz.beacon.sdk.ios
 Files: .github/* infrastructure/* .gitignore .pre-commit-config.yaml LICENSE.md Gemfile BZBeaconSDK.podspec Podfile Podfile.lock Jenkinsfile-Release swagger/* fastlane/* Demo/Assets.xcassets/* Demo/Base.lproj/* *.plist *.xcworkspacedata *.xcscheme *.pbxproj */Beacon.xcdatamodeld/*
 Copyright: (c) NOI Techpark <digital@noi.bz.it>
 License: CC0-1.0
+
+Files: KontaktSDK.framework/*
+Copyright: (c) 2015 kontakt.io <kontakt@kontakt.io>
+License: CC-BY-ND-1.0
