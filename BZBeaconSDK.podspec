@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "BZBeaconSDK"
-  s.version      = "0.1.8"
+  s.version      = "0.2.0"
   s.summary      = "SDK for the Beacon Suedtirol - Alto Adige Project"
 
   s.description  = "Find nearby beacons of the Beacon Suedtirol - Alto Adige Project, and get all relevant information about them"
